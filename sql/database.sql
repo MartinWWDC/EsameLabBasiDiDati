@@ -11,14 +11,14 @@ CREATE TABLE "docente" (
 );
 
 CREATE TABLE "corsoDiLaurea" (
-  "id" INTEGER PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "nome" varchar(255) NOT NULL,
   "durata" integer NOT NULL,
   "anno" varchar(255) NOT NULL
 );
 
 CREATE TABLE "insegnamento" (
-  "id" INTEGER PRIMARY KEY,
+  "id" SERIAL  PRIMARY KEY,
   "nomeInsegnamento" varchar(255),
   "annoConsigliato" INTEGER NOT NULL,
   "corsoDiAppartenenza" INTEGER NOT NULL REFERENCES "corsoDiLaurea" ("id"),
@@ -70,7 +70,7 @@ CREATE TABLE "studente_arc" (
 );
 
 CREATE TABLE "voti_arc" (
-  "id" INTEGER PRIMARY KEY,
+  "id" SERIAL  PRIMARY KEY,
   "voto" INTEGER NOT NULL,
   "dataEsame" date,
   "studente" varchar(6) REFERENCES "studente_arc" ("matricola")
@@ -82,3 +82,7 @@ CREATE TABLE "insegnamento_arc" (
   PRIMARY KEY ("id_voto", "id_insegnamento")
 );
 
+
+ALTER TABLE "insegnamento"
+ALTER COLUMN "cfu" SET DATA TYPE integer,
+ALTER COLUMN "cfu" SET NOT NULL;
