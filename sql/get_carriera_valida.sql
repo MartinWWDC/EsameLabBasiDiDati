@@ -1,22 +1,22 @@
-create or replace function get_carriera_valida(id_studente varchar)
-returns table(id_insegnamento integer, nome_insegamento varchar,voto integer) as $$
+CREATE OR REPLACE FUNCTION get_carriera_valida(id_studenteP varchar)
+RETURNS TABLE (id_insegnamento integer, nome_insegnamento varchar, voto integer) AS $$
 BEGIN
-	return QUERY
-
-	select i.id_insegnamento, i.nome_insegamento,v.voto
-	from insegnamento i 
-	inner join sostiene s on i.id=s.id_corso
-	where s.id_studente=id_studente
-	and s.data=(
-		select max(data)
-		from sostiene
-		where id_corso=s.id_corso and id_studente=s.id_studente
-		)
-	
-	and s.voto>=18
-	
-	and s.voto is not null;
-	return;
+    RETURN QUERY
+    SELECT i.id, i."nomeInsegnamento", s.voto
+    FROM insegnamento i 
+    INNER JOIN sostiene s ON i.id = s.id_corso
+    WHERE s.id_studente = id_studenteP
+        AND s.data = (
+            SELECT MAX(data)
+            FROM sostiene
+            WHERE sostiene.id_corso = s.id_corso AND sostiene.id_studente = s.id_studente
+        )
+        AND s.voto >= 18
+        AND s.voto IS NOT NULL;
+    RETURN;
 END;
+$$ LANGUAGE plpgsql;
 
-$$ language plpgsql;
+
+SELECT * FROM get_carriera_valida('123456');
+

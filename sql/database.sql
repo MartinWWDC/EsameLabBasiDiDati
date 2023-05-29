@@ -1,3 +1,11 @@
+CREATE DOMAIN voto AS integer
+   CONSTRAINT valid_voto CHECK (VALUE >= 1 AND VALUE <= 30);
+CREATE DOMAIN annoDiInsengnamento AS integer
+   CONSTRAINT valid_annoDiInsengnamento CHECK (VALUE >= 1 AND VALUE <= 3);
+
+CREATE DOMAIN annoDiInsengnamentoMag AS integer
+   CONSTRAINT valid_annoDiInsengnamento CHECK (VALUE >= 1 AND VALUE <= 2);
+  
 CREATE TABLE "segreteria" (
   "email" VARCHAR(255) PRIMARY KEY,
   "password" VARCHAR(255) NOT NULL
@@ -86,3 +94,6 @@ CREATE TABLE "insegnamento_arc" (
 ALTER TABLE "insegnamento"
 ALTER COLUMN "cfu" SET DATA TYPE integer,
 ALTER COLUMN "cfu" SET NOT NULL;
+
+ALTER TABLE "voti_arc" ALTER COLUMN "voto" set DATA TYPE voto;
+ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
