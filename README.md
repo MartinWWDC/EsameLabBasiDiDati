@@ -195,6 +195,18 @@
   
   - [x] finito
 
+- nuovo_anno_accademico
+  
+  dato in input l'id di un corso di laurea si  occupa di creare un corso di laurea per l'anno successivo clonando e aggiornando tutti gli insegnamenti
+  
+  - [ ] da implementare
+  
+  - [ ] da popolare
+  
+  - [ ] da testare 
+  
+  - [ ] finito
+
 # Domini
 
 * voto
