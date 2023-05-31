@@ -3,7 +3,7 @@
 - [x] installa mark text su ubuntu
 - [x] add cfu to insegnamento 
 - [x] update  db with domains
-- [ ] fix  insegnamento globale e non più 
+- [x] fix  insegnamento globale e non più 
 
 # 
 
@@ -15,7 +15,7 @@
 
 - [x] create domanins
 
-- [ ] 
+- [ ] fix permessi utenti 
 
 - [ ] popolare db
 
@@ -92,11 +92,11 @@
   
   Controlla che non avvengano due appelli nello stesso giorni di insegnamenti appartenenti allo stesso corso di laurea e dello stesso anno 
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
