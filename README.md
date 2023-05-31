@@ -1,8 +1,11 @@
 # to do
 
-- [ ] installa mark text su ubuntu
-- [ ] add cfu to insegnamento 
-- [ ] update  db with domains
+- [x] installa mark text su ubuntu
+- [x] add cfu to insegnamento 
+- [x] update  db with domains
+- [ ] fix  insegnamento globale e non più 
+
+# 
 
 # Road Map
 
@@ -39,11 +42,11 @@
   * Controllo almeno di un insegnamento  di cui è responsabile 
   
   * dato il database di prima crea un trigger  dove ti assicurati che ogni volta che viene  aggiunto un insegamento dove nella chiave esterna fa riferimento ad un professore assicurati che quel docente non abbia già più di 3 insegnamenti associati
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito 
 
@@ -60,13 +63,13 @@
 * ControlloPropeedeuticità 
   
   * controllo che uno studente sia stato prommosso per gli esami propedeutica
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 * Controllo Iscrizione Esame corso di laurea
   
@@ -195,7 +198,11 @@
   
   - [x] finito
 
-- nuovo_anno_accademico
+- create_docente(email varchar,pass varchar,nome varchar,cognome varchar,idIns integer)
+  
+  crea un docente e gli  associa direttamente un insegnamento (unico modo per creare un docente)
+
+- nuovo_anno_accademico (deprecata)
   
   dato in input l'id di un corso di laurea si  occupa di creare un corso di laurea per l'anno successivo clonando e aggiornando tutti gli insegnamenti
   
@@ -230,4 +237,10 @@
 
 # Domande
 
-- [ ] controllo validità docente e corso
+- [x] controllo validità docente e corso
+
+# Note:
+
+- cancellazione docente non necessaria
+
+- Inserimento nuovo docente implica  che il docente sia 
