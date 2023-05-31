@@ -1,26 +1,29 @@
-CREATE OR REPLACE  FUNCTION check_esami()
-returns trigger as $$
-declare
-	idLaurea INTEGER;
-begin 
-	select idLaurea into idLaurea
-	from Studente
-	where matricola=NEW.id_studente;
+CREATE OR REPLACE FUNCTION check_esami()
+RETURNS trigger AS $$
+DECLARE
+    idLaurea INTEGER;
+BEGIN 
+    SELECT idLaurea INTO idLaurea
+    FROM Studente
+    WHERE matricola = NEW.id_studente;
 
-	if not exists (
-	select 1  
-	from insegamento 
-	where id=new.id_corso and corsoDiAppartenenza=idLaurea
-	) then 
-		raise exception 'insegamento non associato al corso di laurea che si frequenta'
-	end if;
+    IF NOT EXISTS (
+        SELECT 1  
+        FROM insegnamento 
+        WHERE id = NEW.id_corso AND corsoDiAppartenenza = idLaurea
+    ) THEN 
+        RAISE EXCEPTION 'insegnamento non associato al corso di laurea che si frequenta';
+    END IF;
 
-	return NEW;
+    IF NOT check_propedeuticità(NEW.id_studente, NEW.id_insegnamento) THEN
+        RAISE EXCEPTION 'propedeuticità non rispettate';
+    END IF;
 
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
-$$ language plpgsql
-
-create trigger check_esami_tr
-	before insert in sostiene
-	for each row 
-	execute FUNCTION check_esami();
+CREATE TRIGGER check_esami_tr
+BEFORE INSERT ON sostiene
+FOR EACH ROW 
+EXECUTE FUNCTION check_esami();
