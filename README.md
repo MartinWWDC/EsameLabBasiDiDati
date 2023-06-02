@@ -148,11 +148,11 @@
 
 - check laurea
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
@@ -160,11 +160,11 @@
   
   Dato un appelo e uno studente  viene aggiunto  il voto e aggiornato  richiamando l'apposita funzione  trigger che ogni volta che viene  aggiunto un  esame 
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
@@ -259,4 +259,4 @@
 
 - cancellazione docente non necessaria
 
-- Inserimento nuovo docente implica  che il docente sia 
+- Inserimento nuovo docente implica  che il docente sia z
