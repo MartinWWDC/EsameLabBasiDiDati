@@ -5,7 +5,7 @@ BEGIN
 
 	select i.id_insegnamento, i.nome_insegamento,v.voto
 	from insegnamento i 
-
+	--todo 
 	return;
 END;
 
