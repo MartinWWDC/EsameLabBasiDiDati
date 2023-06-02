@@ -50,7 +50,7 @@
   
   - [ ] finito 
 
-* sposta Studente in archivio 
+* sposta Studente in archivio (on going)
   
   - [ ] da implementare
   
@@ -88,7 +88,7 @@
   
   - [x] finito
 
-* Controllo sovrapposizione esami Calendario (on going)
+* Controllo sovrapposizione esami Calendario 
   
   Controlla che non avvengano due appelli nello stesso giorni di insegnamenti appartenenti allo stesso corso di laurea e dello stesso anno 
   
@@ -102,13 +102,13 @@
 
 * controllo anno previsto di un insegnamento  sia coerente con  il corso di laurea 
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 # Lista Metodi
 
@@ -135,12 +135,14 @@
   - [x] finito
 
 - Produzione delle informazioni su un corso di laurea
+  
+  restituisce  tutti gli insegnamenti associati 
 
-- - [ ] da implementare
+- - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
@@ -154,13 +156,27 @@
   
   - [ ] finito
 
-- calcolo cfu
+- Add voto 
+  
+  Dato un appelo e uno studente  viene aggiunto  il voto e aggiornato  richiamando l'apposita funzione  trigger che ogni volta che viene  aggiunto un  esame 
   
   - [ ] da implementare
   
   - [ ] da popolare
   
   - [ ] da testare 
+  
+  - [ ] finito
+
+- update cfue
+  
+  dato l'id di uno studente  controlla le materie da lui passate e aggiorna i cfu 
+  
+  - [x] da implementare
+  
+  - [x] da popolare
+  
+  - [x] da testare 
   
   - [ ] finito
 
