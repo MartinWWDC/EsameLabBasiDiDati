@@ -97,3 +97,4 @@ ALTER COLUMN "cfu" SET NOT NULL;
 
 ALTER TABLE "voti_arc" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
+ALTER TABLE "docente"  ADD COLUMN "dataDiNascita" timestamp;

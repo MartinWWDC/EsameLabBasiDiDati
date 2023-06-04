@@ -4,8 +4,7 @@ DECLARE
     tabella1 RECORD;
     tabella2 RECORD;
     idLaureaV INTEGER;
-BEGIN
-	RETURN 
+BEGIN 
 	SELECT nome_insegnamento
     FROM get_carriera_valida(id_studenteP)
     INTO tabella1;
