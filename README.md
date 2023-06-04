@@ -46,7 +46,7 @@
   
   - [x] da popolare
   
-  - [x] da testare 
+  - [ ] da testare 
   
   - [ ] finito 
 
@@ -109,16 +109,27 @@
   - [x] da testare 
   
   - [x] finito
-
-# Lista Metodi
-
-- produzione carriera completa di uno studente
+- checkInsegnamentoDocente
+  
+  questo trigger si occupa di controllare che un docente quando viene creato non  venga associato ad un insengamento con già un docente  associato 
   
   - [ ] da implementare
   
   - [ ] da popolare
   
   - [ ] da testare 
+  
+  - [ ] finito
+
+# Lista Metodi
+
+- produzione carriera completa di uno studente
+  
+  - [x] da implementare
+  
+  - [x] da popolare
+  
+  - [x] da testare 
   
   - [ ] finito
 
@@ -217,10 +228,18 @@
 - create_docente(email varchar,pass varchar,nome varchar,cognome varchar,idIns integer)
   
   crea un docente e gli  associa direttamente un insegnamento (unico modo per creare un docente)
-
-- nuovo_anno_accademico (deprecata)
   
-  dato in input l'id di un corso di laurea si  occupa di creare un corso di laurea per l'anno successivo clonando e aggiornando tutti gli insegnamenti
+  - [x] da implementare
+  
+  - [x] da popolare
+  
+  - [x] da testare 
+  
+  - [ ] finito
+
+- creaInsengamento 
+  
+  tutti gli insegnamenti vengono creati con associati un docente nullo 
   
   - [ ] da implementare
   
@@ -229,6 +248,10 @@
   - [ ] da testare 
   
   - [ ] finito
+
+- aggiornaResponsabile
+  
+  
 
 # Domini
 
