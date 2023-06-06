@@ -18,7 +18,16 @@
 
     $cn= pg_connect($str);
     pg_query($cn,"set SEARCH_PATH TO esami");
-    $result=pg_query($cn,"SELECT * from get_carriera_valida('111111')");
+
+    $params = array(
+    	'111111'
+    );
+    $sql="SELECT * from get_carriera_valida($1)";
+
+    $result = pg_prepare($cn, "check_user", $sql);
+    $result = pg_execute($cn, "check_user", $params);
+    //$result=pg_query($cn,"SELECT * from get_carriera_valida('111111')");
+    
     if (!$result) {
         echo "An error occurred.\n";
         exit;

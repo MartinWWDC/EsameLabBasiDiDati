@@ -20,6 +20,7 @@ BEGIN
         -- Solleva un'eccezione se l'insegnamento ha già un docente come responsabile
         RAISE EXCEPTION 'L''insegnamento ha già un docente come responsabile';
     END IF;
+    
 END;
 $$ LANGUAGE plpgsql;
 

@@ -16,6 +16,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER docente_insegnamento_tr
-BEFORE UPDATE ON insegnamento
+BEFORE UPDATE or INSERT ON insegnamento
 FOR EACH ROW
 EXECUTE FUNCTION docente_insegnamento();
