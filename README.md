@@ -5,7 +5,9 @@
 - [x] update  db with domains
 - [x] fix  insegnamento globale e non più 
 
-# 
+# Note
+
+doecente di default per segnalare il mancato assegnamento di un insegnamento è  'null'  
 
 # Road Map
 
@@ -50,7 +52,7 @@
   
   - [ ] finito 
 
-* sposta Studente in archivio (on going)
+* sposta Studente in archivio
   
   - [ ] da implementare
   
@@ -113,11 +115,11 @@
   
   questo trigger si occupa di controllare che un docente quando viene creato non  venga associato ad un insengamento con già un docente  associato 
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
@@ -241,17 +243,15 @@
   
   tutti gli insegnamenti vengono creati con associati un docente nullo 
   
-  - [ ] da implementare
+  - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
 - aggiornaResponsabile
-  
-  
 
 # Domini
 
