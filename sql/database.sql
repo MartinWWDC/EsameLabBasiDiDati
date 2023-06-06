@@ -30,7 +30,7 @@ CREATE TABLE "insegnamento" (
   "nomeInsegnamento" varchar(255),
   "annoConsigliato" INTEGER NOT NULL,
   "corsoDiAppartenenza" INTEGER NOT NULL REFERENCES "corsoDiLaurea" ("id"),
-  "responsabile" VARCHAR(255) NOT NULL REFERENCES "docente" ("email")
+  "responsabile" VARCHAR(255) REFERENCES "docente" ("email")
 );
 
 CREATE TABLE "propedeuticita" (
