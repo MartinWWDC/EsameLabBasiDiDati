@@ -4,6 +4,9 @@
 - [x] add cfu to insegnamento 
 - [x] update  db with domains
 - [x] fix  insegnamento globale e non più 
+- [x] fix di tutti i create con le transaction
+- [x] fix create insengnamento 
+- [ ] update
 
 # Note
 
@@ -21,7 +24,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 
 - [ ] popolare db
 
-- [ ] sviluppo trigger
+- [x] sviluppo trigger
 
 - [ ] sviluppo funzioni
 
@@ -114,6 +117,18 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 - checkInsegnamentoDocente
   
   questo trigger si occupa di controllare che un docente quando viene creato non  venga associato ad un insengamento con già un docente  associato 
+  
+  - [x] da implementare
+  
+  - [x] da popolare
+  
+  - [x] da testare 
+  
+  - [ ] finito
+
+- checkDocenteInsegnamento
+  
+  sfruttando la transaction in create docente si occupa di controllare che abbia sempre un docente abbia sempre un insegnamento associato
   
   - [x] da implementare
   
@@ -237,11 +252,13 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [x] da testare 
   
+  - [ ] add transaction
+  
   - [ ] finito
 
 - creaInsengamento 
   
-  tutti gli insegnamenti vengono creati con associati un docente nullo 
+  tutti gli insegnamenti vengono creati con associati un docente null
   
   - [x] da implementare
   
@@ -249,12 +266,21 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [x] da testare 
   
+  - [x] add transaction 
+  
   - [ ] finito
 
-- aggiornaResponsabile
-
-# Domini
-
+- aggiornaResponsabil
+  
+  - [ ] da implementare
+  
+  - [ ] da popolare
+  
+  - [ ] da testare 
+  
+  - [ ] finito
+    
+    # Domini
 * voto
   
   * crea un dominio chiamato voto che è un integere che può avere un valore da 1 a 30
