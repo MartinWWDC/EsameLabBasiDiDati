@@ -214,15 +214,15 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [ ] finito
 
-- produzione carriera studenti inattivi (on going)
+- produzione carriera studenti inattivi 
   
   dato l'id di uno studente inattivo restituisce la sua carriera 
   
-  - [ ] da implementare
+  - [x] da implementare
   
   - [ ] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito
 
