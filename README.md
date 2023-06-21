@@ -38,6 +38,8 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 
 - [ ] check export db
 
+- [ ] refactoring nomi  
+
 # Lista Presupposti
 
 * Uno studente in archivo non può essere recuperato in quanto i motivi per cui si trova in archivio sono o perchè è laureato o perchè ha rinunciato agli studi 
@@ -55,7 +57,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
   - [ ] finito 
 
@@ -212,7 +214,9 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [ ] finito
 
-- produzione carriera studenti inattivi
+- produzione carriera studenti inattivi (on going)
+  
+  dato l'id di uno studente inattivo restituisce la sua carriera 
   
   - [ ] da implementare
   
