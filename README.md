@@ -6,7 +6,11 @@
 - [x] fix  insegnamento globale e non più 
 - [x] fix di tutti i create con le transaction
 - [x] fix create insengnamento 
+- [ ] demo web
 - [ ] update
+- [ ] studente inattivo
+- [ ] finalizza interfaccia 
+- [ ] creazione interfaccia definitiva
 
 # Note
 
