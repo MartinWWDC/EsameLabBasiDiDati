@@ -287,6 +287,16 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   - [ ] da testare 
   
   - [ ] finito
+
+- CreateStudente
+  
+  - [ ] da implementare
+  
+  - [ ] da popolare
+  
+  - [ ] da testare 
+  
+  - [ ] finito
     
     # Domini
 * voto
