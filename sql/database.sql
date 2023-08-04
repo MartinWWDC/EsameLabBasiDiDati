@@ -62,6 +62,7 @@ CREATE TABLE "sostiene" (
   "data" timestamp,
   "id_studente" varchar(6) REFERENCES "Studente" ("matricola"),
   "voto" integer,
+  "cfu" integer,
   PRIMARY KEY ("id_corso", "data", "id_studente"),
   FOREIGN KEY ("id_corso", "data") REFERENCES "appello" ("corso", "dataA")
 );
@@ -90,10 +91,6 @@ CREATE TABLE "insegnamento_arc" (
   PRIMARY KEY ("id_voto", "id_insegnamento")
 );
 
-
-ALTER TABLE "insegnamento"
-ALTER COLUMN "cfu" SET DATA TYPE integer,
-ALTER COLUMN "cfu" SET NOT NULL;
 
 ALTER TABLE "voti_arc" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
