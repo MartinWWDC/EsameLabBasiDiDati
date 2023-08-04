@@ -29,6 +29,7 @@ CREATE TABLE "insegnamento" (
   "id" SERIAL  PRIMARY KEY,
   "nomeInsegnamento" varchar(255),
   "annoConsigliato" INTEGER NOT NULL,
+  "cfu" integer,
   "corsoDiAppartenenza" INTEGER NOT NULL REFERENCES "corsoDiLaurea" ("id"),
   "responsabile" VARCHAR(255) REFERENCES "docente" ("email")
 );
@@ -62,7 +63,6 @@ CREATE TABLE "sostiene" (
   "data" timestamp,
   "id_studente" varchar(6) REFERENCES "Studente" ("matricola"),
   "voto" integer,
-  "cfu" integer,
   PRIMARY KEY ("id_corso", "data", "id_studente"),
   FOREIGN KEY ("id_corso", "data") REFERENCES "appello" ("corso", "dataA")
 );

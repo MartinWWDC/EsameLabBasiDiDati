@@ -1,10 +1,10 @@
 --insert cordo di luarea
 INSERT INTO "corsoDiLaurea" ("id", "nome", "durata", "anno")
-VALUES ('informatica', 3, '2022');
+VALUES (0,'informatica', 3, '2022');
 INSERT INTO "corsoDiLaurea" ("id", "nome", "durata", "anno")
-VALUES ('informatica musicale', 3, '2022');
+VALUES (1,'informatica musicale', 3, '2022');
 INSERT INTO "corsoDiLaurea" ("id", "nome", "durata", "anno")
-VALUES ('chimica', 3, '2022');
+VALUES (2,'chimica', 3, '2022');
 
 INSERT INTO "docente" ("email", "pass", "nome", "cognome")
 VALUES ('docente@example.com', 'password', 'mario', 'rossi');
@@ -32,6 +32,6 @@ VALUES ('2023-05-29 10:00:00', 'Aula 101', 2);
 INSERT INTO "sostiene" ("id_corso", "data", "id_studente", "voto")
 VALUES (1, '2023-05-30 10:00:00', '123456', 18);
 INSERT INTO "sostiene" ("id_corso", "data", "id_studente", "voto")
-VALUES (1, '2023-05-20 10:00:00', '123456', 30);I
+VALUES (1, '2023-05-20 10:00:00', '123456', 30);
 iNSERT INTO "sostiene" ("id_corso", "data", "id_studente", "voto")
 VALUES (1, '2023-05-29 10:00:00', '123456', 10);

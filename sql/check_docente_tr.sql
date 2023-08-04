@@ -15,7 +15,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER check_docente_tr
-BEFORE INSERT AND UPDATE ON docente
+CREATE TRIGGER check_docente_insert_tr
+BEFORE INSERT ON docente
+FOR EACH ROW 
+EXECUTE FUNCTION check_docente();
+
+CREATE TRIGGER check_docente_update_tr
+BEFORE UPDATE ON docente
 FOR EACH ROW 
 EXECUTE FUNCTION check_docente();

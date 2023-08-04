@@ -9,8 +9,8 @@ BEGIN
     FROM get_carriera_valida(id_studenteP)
     INTO tabella1;
 
-    SELECT idLaurea INTO idLaureaV
-    FROM Studente
+    SELECT "idLaurea" INTO idLaureaV
+    FROM "Studente"
     wHERE matricola=id_studenteP;
 
     SELECT nome_insegnamento
