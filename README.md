@@ -6,7 +6,7 @@
 - [x] fix  insegnamento globale e non più 
 - [x] fix di tutti i create con le transaction
 - [x] fix create insengnamento 
-- [ ] archivio
+- [x] archivio
 - [ ] demo web
 - [ ] update
 - [ ] studente inattivo
