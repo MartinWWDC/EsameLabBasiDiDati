@@ -6,6 +6,7 @@
 - [x] fix  insegnamento globale e non più 
 - [x] fix di tutti i create con le transaction
 - [x] fix create insengnamento 
+- [ ] archivio
 - [ ] demo web
 - [ ] update
 - [ ] studente inattivo
@@ -37,6 +38,8 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 - [ ] fix nome colonne
 
 - [ ] check export db
+
+- [ ] convert create function into trigger before insert
 
 - [ ] refactoring nomi  
 

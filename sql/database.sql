@@ -68,13 +68,16 @@ CREATE TABLE "sostiene" (
 );
 
 
+
 CREATE TABLE "studente_arc" (
   "matricola" varchar(6) PRIMARY KEY,
-  "email" varchar(255) NOT NULL,
+  "email" varchar(255) UNIQUE NOT NULL,
+  "pass" varchar(255) NOT NULL,
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
+  "cfu" integer DEFAULT 0,
   "cellulare" varchar(255) UNIQUE NOT NULL,
-  "perdiodoInattivita" timestamp NOT NULL,
+  "periodoInattivita" interval,
   "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id")
 );
 
