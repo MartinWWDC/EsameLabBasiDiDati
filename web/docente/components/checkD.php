@@ -8,7 +8,7 @@ if (!empty($_SESSION["user"])) {
     }
 } else{
     echo "test:".$_SESSION['user'];
-    #header('Location: ../');
+    header('Location: ../');
 
 }
 
