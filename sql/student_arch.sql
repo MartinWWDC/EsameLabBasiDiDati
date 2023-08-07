@@ -6,7 +6,12 @@ RETURNS INTERVAL AS
 $$
 DECLARE
     data_sostenimento TIMESTAMP;
+    is_laureato BOOLEAN;
 BEGIN
+    SELECT check_laurea() into is_laureato;
+    IF is_laureato THEN
+        RETURN NULL;
+    END IF; 
     -- Ottieni la data di sostenimento dell'esame più antico per lo studente
     SELECT g.data_sostenimento INTO data_sostenimento
     FROM get_carriera(studente_id) g
