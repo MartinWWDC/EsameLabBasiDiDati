@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <?php
-    session_start();
-
-    // Parametri di connessione al database
+<?php
+function launchSQL(string $sql, array $params){
     $host = 'localhost';
-    $dbname = 'esami'; // Rimuovi eventuali spazi inutili qui
+    $dbname = 'esami';
     $user = 'postgres';
     $password = 't';
     $str = "host={$host} port=5432 dbname={$dbname} user={$user} password={$password}";
@@ -19,12 +9,42 @@
     $cn = pg_connect($str);
     pg_query($cn, "set SEARCH_PATH TO esami");
 
-    try {
-        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die('Connessione al database fallita: ' . $e->getMessage());
-    }
+   $result = pg_prepare($cn, "check_user", $sql);
+   if (!$result) {
+       echo "An error occurred in preparing the query.\n";
+
+       exit;
+   }
+
+   $result = pg_execute($cn, "check_user", $params);
+
+
+   if (!$result) {
+       echo "An error occurred in executing the query.\n";
+       exit;
+
+   }
+   return $result;
+
+}
+/*
+$sql = "SELECT *FROM docente WHERE email=$1";
+
+$id = 'docente@example.com';
+
+$params=array($id);
+$result=launchSQL($sql,$params);
+while ($row = pg_fetch_row($result)) {
+    echo "testo";
+    echo var_dump($row);
+    
+    exit;
+
+}
+*/
+
+/*
+
 
     // Verifica se sono stati inviati i dati del modulo
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,23 +77,19 @@
                 exit;
 
             }
-            //$_SESSION["di"]=4;
+           
             while ($row = pg_fetch_row($result)) {
-                $_SESSION["user"] = $row;
-                $_SESSION["type"]= $type;
-                
                 echo "testo";
-         
+                echo var_dump($row);
+                $_SESSION['user'] = $row;
+                $_SESSION['type']= $type;
+                $_SESSION['db']=$cn;
                 if ($type == 'Studente') {
                     header('Location: studente/');
-
                 } else {
-                    #header('Location: pag1.php');
                     header('Location: docente/');
-
                 }
-                exit();
-
+                exit;
 
             }
         } catch (PDOException $e) {
@@ -81,6 +97,5 @@
             echo 'Errore nella query: ' . $e->getMessage();
         }
     }
-    ?>
-</body>
-</html>
+*/
+?>

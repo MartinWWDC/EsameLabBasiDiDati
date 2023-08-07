@@ -11,37 +11,15 @@
 
  
 <body>
-<?php session_start(); include './components/checkD.php'
-?>
-<?php include '../public_components/header.php'; ?>
+<?php include '../public_components/checkD.php' ?>
+<?php include '../public_components/header.php' ?>
 
 <div class="container-fluid">
     <div class="row">
     <?php include 'components/sidebar.php' ?>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <?php
-    
-    require  '../public_components/utility.php';
-    
-    $sql = "SELECT *FROM docente WHERE email=$1";
-
-    $id = 'docente@example.com';
-    
-    $params=array($id);
-    $result=launchSQL($sql,$params);
-    $prof=array();
-    while ($row = pg_fetch_row($result)) {
-        //echo var_dump($row);
-        $prof=$row;
-    
-    }
-    
-
-?>
-
-    
-    <div class="pt-3 pb-2 mb-3">
-            <h2>Benvenuto prof <?php echo $prof[3] ?></h2>
+        <div class="pt-3 pb-2 mb-3">
+            <h2>Benvenuto nella tua dashboard</h2>
         </div>
 
 
