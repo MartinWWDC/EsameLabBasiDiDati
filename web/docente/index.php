@@ -20,12 +20,12 @@
     <?php include 'components/sidebar.php' ?>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <?php
-    
+ 
     require  '../public_components/utility.php';
     
     $sql = "SELECT *FROM docente WHERE email=$1";
 
-    $id = 'docente@example.com';
+    $id = $_SESSION["user"][0];
     
     $params=array($id);
     $result=launchSQL($sql,$params);
@@ -35,6 +35,7 @@
         $prof=$row;
     
     }
+    
     
 
 ?>
