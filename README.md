@@ -66,7 +66,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 
 * sposta Studente in archivio
   
-  - [ ] da implementare
+  - [x] da implementare
   
   - [ ] da popolare
   
