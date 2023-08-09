@@ -27,5 +27,7 @@ function launchSQL(string $sql, array $params,string $name){
        exit;
 
    }
+   return $result;
+
 }
 ?>
