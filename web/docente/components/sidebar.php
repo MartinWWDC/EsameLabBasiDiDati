@@ -15,7 +15,10 @@ session_start();
                         <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/appello/">Appelli</a>
+                    <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/appello/">Appelli</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/appello/creaAppello.php">Crea Appello</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Rapporti</a>
