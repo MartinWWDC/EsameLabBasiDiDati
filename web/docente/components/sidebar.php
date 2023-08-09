@@ -12,10 +12,10 @@ session_start();
                 <!-- Links della sidebar -->
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Statistiche</a>
+                        <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/appello/">Appelli</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Rapporti</a>
