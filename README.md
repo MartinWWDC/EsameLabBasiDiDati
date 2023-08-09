@@ -9,9 +9,9 @@
 - [x] archivio
 - [ ] demo web
 - [ ] update
-- [ ] studente inattivo
+- [x] studente inattivo
 - [ ] finalizza interfaccia 
-- [ ] creazione interfaccia definitiva
+- [ ] gestione utenti psql
 
 # Note
 
