@@ -12,6 +12,7 @@
 - [x] studente inattivo
 - [ ] finalizza interfaccia 
 - [ ] gestione utenti psql
+- [ ] gestione erorri 
 
 # Note
 
