@@ -13,6 +13,7 @@
 - [ ] finalizza interfaccia 
 - [ ] gestione utenti psql
 - [ ] gestione erorri 
+- [ ] fix date create appello  
 
 # Note
 
