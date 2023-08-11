@@ -15,6 +15,6 @@ $params=array($voto,$data,$corso,$student);
 
 $result=launchSQL($sql,$params,"set_voto");
 
-header("./assegnaVoto.php");
+header("Location: assegnaVoto.php?corso=".$corso."&dataA=".$data);
 exit;
 ?>
