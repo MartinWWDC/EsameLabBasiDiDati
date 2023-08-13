@@ -68,7 +68,6 @@
                     header('Location: studente/');
 
                 } else {
-                    #header('Location: pag1.php');
                     header('Location: docente/');
 
                 }

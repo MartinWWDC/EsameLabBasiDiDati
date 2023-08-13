@@ -88,9 +88,9 @@
     document.addEventListener('DOMContentLoaded', function() {
         const date = new Date();
 
-let day = date.getDate();
-let month = date.getMonth() + 1;
-let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
         const form = document.getElementById('appelloForm');
         form.addEventListener('submit', function(event) {
             let currentDate = `${day}-${month}-${year}`;

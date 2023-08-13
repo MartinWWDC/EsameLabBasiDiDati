@@ -23,7 +23,6 @@ function launchSQL(string $sql, array $params,string $name){
    if (!$result) {
        echo "An error occurred in executing the query.\n";
        echo pg_last_error($cn); // Stampa l'errore PostgreSQL
-
        exit;
 
    }
