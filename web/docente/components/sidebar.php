@@ -20,9 +20,5 @@ session_start();
                     <li class="nav-item">
                     <a class="nav-link" href="/EsameLabBasiDiDati/web/docente/appello/creaAppello.php">Crea Appello</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rapporti</a>
-                    </li>
-                    <!-- Aggiungi altri link per le diverse sezioni della tua dashboard -->
                 </ul>
             </nav>
