@@ -59,7 +59,7 @@
                     //echo var_dump($row);
                     $sql='select * from get_propedeuticità($1)';
                     $params=array($row[0]);
-                    $res=launchSQL($sql,$params,"get_prop".random_int(0,100));
+                    $res=launchSQL($sql,$params,"get_prop".random_int(0,10000));
                     $prop="";
                     while ($r = pg_fetch_row($res)) {
                       $prop.=" ".$r[1];

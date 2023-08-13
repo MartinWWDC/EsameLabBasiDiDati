@@ -15,10 +15,10 @@ session_start();
             <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/appello/">Appelli</a>
+            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/appelli.php">Appelli</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Carriera</a>
+            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/carriera.php">Carriera</a>
         </li>
         
     </ul>
