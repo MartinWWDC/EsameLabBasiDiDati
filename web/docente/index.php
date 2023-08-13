@@ -24,18 +24,12 @@
                 <?php
 
                 require  '../public_components/utility.php';
-
-                $sql = "SELECT *FROM docente WHERE email=$1";
-
                 $id = $_SESSION["user"][0];
 
                 $params = array($id);
-                $result = launchSQL($sql, $params, "check_user");
-                $prof = array();
-                while ($row = pg_fetch_row($result)) {
-                    //echo var_dump($row);
-                    $prof = $row;
-                }
+                $prof = $_SESSION['user'];
+
+               
                 ?>
 
                 <main role="main">
