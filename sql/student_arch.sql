@@ -8,7 +8,7 @@ DECLARE
     data_sostenimento TIMESTAMP;
     is_laureato BOOLEAN;
 BEGIN
-    SELECT check_laurea() into is_laureato;
+    SELECT check_laurea(studente_id) into is_laureato;
     IF is_laureato THEN
         RETURN NULL;
     END IF; 
@@ -41,12 +41,14 @@ BEGIN
     
     INSERT INTO studente_arc VALUES (OLD.matricola, OLD.email,OLD.pass, OLD.nome, OLD.cognome,OLD.cfu, OLD.cellulare, periodo_inattivita,OLD."idLaurea");
 
-    FOR record_voto IN SELECT * FROM get_carriera_valida(OLD.matricola)
+    FOR record_voto IN SELECT * FROM get_carriera(OLD.matricola)
     LOOP
-  
-        INSERT INTO voti_arc (id,voto,"dataEsame",studente)
-        VALUES (DEFAULT, record_voto.voto, record_voto.data_sostenimento, OLD.matricola) RETURNING id INTO voto_id;
-        INSERT INTO insegnamento_arc(id_voto,id_insegnamento) VALUES (voto_id,record_voto.id_insegnamento);
+        IF record_voto.voto IS NOT NULL THEN
+            INSERT INTO voti_arc (id,voto,"dataEsame",studente)
+            VALUES (DEFAULT, record_voto.voto, record_voto.data_sostenimento, OLD.matricola) RETURNING id INTO voto_id;
+            INSERT INTO insegnamento_arc(id_voto,id_insegnamento) VALUES (voto_id,record_voto.id_insegnamento);
+            
+        END IF;
         DELETE FROM Sostiene WHERE id_studente=OLD.matricola;
     END LOOP;
     
