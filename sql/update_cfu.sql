@@ -1,17 +1,15 @@
-
-
 CREATE OR REPLACE FUNCTION update_cfu(id_studente varchar)
 RETURNS void AS $$
 DECLARE
     cfuV integer;
 BEGIN
-    SELECT sum(i.cfu) into cfuV
+    SELECT COALESCE(sum(i.cfu), 0) INTO cfuV
     FROM get_carriera_valida(id_studente) c 
-    inner join insegnamento  i on i.id=c.id_insegnamento;
+    INNER JOIN insegnamento i ON i.id = c.id_insegnamento;
 
     UPDATE "Studente" 
-    SET cfu =cfuV
-    wHERE "Studente".matricola = id_studente;
+    SET cfu = cfuV
+    WHERE "Studente".matricola = id_studente;
 
 END;
 $$ LANGUAGE plpgsql;

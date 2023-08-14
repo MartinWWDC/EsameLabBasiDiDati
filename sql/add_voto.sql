@@ -4,6 +4,8 @@ BEGIN
 	UPDATE sostiene 
 	SET voto = votoP
 	WHERE id_studente = id_studenteP AND id_corso = id_corsoP AND "data" = "dataP";
+	PERFORM * FROM update_cfu(id_studenteP);
+
 END;
 $$ LANGUAGE plpgsql;
 
