@@ -46,7 +46,7 @@
           <section class="jumbotron text-center">
             <div class="container">
               <h1 class="jumbotron-heading">Benvenuto: <?php echo $studente[3] . "  " . $studente[4] ?></h1>
-              <?php echo $nomeLaurea; ?>
+              <?php echo $nomeLaurea."  cfu:".$studente[5]; ?>
             </div>
           </section>
           <div class="album py-5 bg-light">
