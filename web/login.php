@@ -37,7 +37,8 @@
             // Usa i parametri nella query per evitare SQL injection
             $sql = 'SELECT * FROM "'.$type.'" WHERE email = $1 AND pass = $2';
             $params = array($email, $password);
-
+            echo $sql;
+            echo var_dump($params);
             // Prepara e esegui la query con pg_prepare e pg_execute
             $result = pg_prepare($cn, "check_user", $sql);
             if (!$result) {
@@ -50,6 +51,7 @@
 
             $result = pg_execute($cn, "check_user", $params);
             echo "sa".$type;
+            echo var_dump($result);
 
 
             if (!$result) {
@@ -57,7 +59,7 @@
                 exit;
 
             }
-            //$_SESSION["di"]=4;
+
             while ($row = pg_fetch_row($result)) {
                 $_SESSION["user"] = $row;
                 $_SESSION["type"]= $type;
@@ -67,14 +69,21 @@
                 if ($type == 'Studente') {
                     header('Location: studente/');
 
-                } else {
+                } 
+                if ($type == 'docente') {
                     header('Location: docente/');
+
+                }
+                if ($type == 'segreteria') {
+                    header('Location: segreteria/');
 
                 }
                 exit();
 
 
             }
+            header('Location: index.html');
+
         } catch (PDOException $e) {
             // Errore nella query
             echo 'Errore nella query: ' . $e->getMessage();
