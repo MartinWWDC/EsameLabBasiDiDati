@@ -6,6 +6,10 @@ if (!empty($_SESSION["user"])) {
         echo "test";
         header('Location: ../docente/');
 
+    }else{
+        echo "test:".$_SESSION['user'];
+        header('Location: ../');
+
     }
 } else{
     header('Location: ../');

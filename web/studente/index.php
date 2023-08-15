@@ -46,25 +46,25 @@
           <section class="jumbotron text-center">
             <div class="container">
               <h1 class="jumbotron-heading">Benvenuto: <?php echo $studente[3] . "  " . $studente[4] ?></h1>
-              <?php echo $nomeLaurea."  cfu:".$studente[5]; ?>
+              <?php echo $nomeLaurea . "  cfu:" . $studente[5]; ?>
             </div>
           </section>
           <div class="album py-5 bg-light">
             <div class="container">
 
               <div class="row">
-              
-                  <?php
-                   while ($row = pg_fetch_row($result)) {
-                    //echo var_dump($row);
-                    $sql='select * from get_propedeuticità($1)';
-                    $params=array($row[0]);
-                    $res=launchSQL($sql,$params,"get_prop".random_int(0,10000));
-                    $prop="";
-                    while ($r = pg_fetch_row($res)) {
-                      $prop.=" ".$r[1];
-                    }
-                    echo '
+
+                <?php
+                while ($row = pg_fetch_row($result)) {
+                  //echo var_dump($row);
+                  $sql = 'select * from get_propedeuticità($1)';
+                  $params = array($row[0]);
+                  $res = launchSQL($sql, $params, "get_prop" . random_int(0, 10000));
+                  $prop = "";
+                  while ($r = pg_fetch_row($res)) {
+                    $prop .= " " . $r[1];
+                  }
+                  echo '
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
@@ -79,19 +79,19 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Nome Insegnamento</th>
-                                            <td>'.$row[1].'</td>
+                                            <td>' . $row[1] . '</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Anno Consigliato</th>
-                                            <td>'.$row[2].'</td>
+                                            <td>' . $row[2] . '</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Propedeuticità:</th>
-                                            <td colspan="2">'.$prop.'</td>
+                                            <td colspan="2">' . $prop . '</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">CFU:</th>
-                                            <td colspan="2">'.$row[3].'</td>
+                                            <td colspan="2">' . $row[3] . '</td>
 
                                         </tr>
                                     </tbody>
@@ -100,14 +100,11 @@
                             </div>
                         </div>
                     </div>';
-
-
-
                 }
                 ?>
 
-               
-                 
+
+
               </div>
             </div>
 

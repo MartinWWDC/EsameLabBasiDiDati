@@ -12,7 +12,7 @@
 
 
 <body>
-    <?php include '../../public_components/checkD.php' ?>
+    <?php include '../components/checkD.php' ?>
     <?php include '../../public_components/header.php' ?>
     <?php
     require  '../../public_components/utility.php';
@@ -96,6 +96,7 @@
                         </form>
                     </article>
                 </div>
+            </main>
 
 
 

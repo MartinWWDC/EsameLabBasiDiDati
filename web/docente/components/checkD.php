@@ -5,6 +5,10 @@ if (!empty($_SESSION["user"])) {
     if($_SESSION["type"]!="docente"){
         header('Location: ../studente/');
 
+    }else{
+        echo "test:".$_SESSION['user'];
+        header('Location: ../');
+
     }
 } else{
     echo "test:".$_SESSION['user'];
