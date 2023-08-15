@@ -7,7 +7,7 @@ BEGIN
     FROM insegnamento 
     WHERE id = idIns;
 
-    IF ref = null THEN
+    IF ref IS NULL THEN
         RETURN true;
     ELSE
         RETURN false;
