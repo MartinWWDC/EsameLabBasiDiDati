@@ -20,6 +20,8 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/carriera.php">Carriera</a>
         </li>
-        
+        <li class="nav-item">
+            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/ritiro.php">Ritiro</a>
+        </li>
     </ul>
 </nav>
