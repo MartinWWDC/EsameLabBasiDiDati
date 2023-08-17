@@ -26,7 +26,7 @@
                 <main role="main">
                     <section class="jumbotron text-center">
                         <div class="container">
-                            <h1 class="jumbotron-heading">Creazione Nuovo Insegnate</h1>
+                            <h1 class="jumbotron-heading">Creazione Nuovo Insegnamento</h1>
                         </div>
                     </section>
                     <div class="album py-5 bg-light">
@@ -35,35 +35,32 @@
                                 <div class="col-md-6 mx-auto">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form>
+                                            <form method="POST" action="corso.php">
                                                 <div class="form-group">
-                                                    <label>Nome docente</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                    <label>Nome Insegnamento</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserire Nome Insegnamento" name="nomeIns">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Cognome docente</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                    <label>Anno Consigliato</label>
+                                                    <input type="number" min="1" max="3" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter anno consigliato" name="annoCons">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Data Nasciata Docente</label>
-                                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                    <label>CFU</label>
+                                                    <input type="number" min="1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="CFU">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Insegnamento</label>
-                                                    <select class="form-select-input" name="type" id="typeSelect">
-                                                        <option value="Studente">Studente</option>
-                                                        <option value="docente">Docente</option>
-                                                        <option value="segreteria">Segreteria</option>
-                                                    </select>
-                                                </div>
+                                                    <label>Corso di laurea</label>
+                                                    <select class="form-select-input" id="typeSelect" name="corsoLa">
 
-                                                <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Conferma Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                        <?php
+                                                        $SQL = 'select * from "corsoDiLaurea"';
+                                                        $params = array();
+                                                        $result = launchSQL($SQL, $params, "get_insegnamenti");
+                                                        while ($row = pg_fetch_row($result)) {
+                                                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>

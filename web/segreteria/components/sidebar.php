@@ -24,7 +24,7 @@ session_start();
             <a class="nav-link" href="">Studenti</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./corsi.php">Corsi</a>
+            <a class="nav-link" href="./creaCorso.php">Corsi</a>
         </li>
         
     </ul>
