@@ -12,16 +12,16 @@ session_start();
     <!-- Links della sidebar -->
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/">Dashboard</a>
+            <a class="nav-link" href="./">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/appelli.php">Appelli</a>
+            <a class="nav-link" href="./appelli.php">Appelli</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/carriera.php">Carriera</a>
+            <a class="nav-link" href="./carriera.php">Carriera</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/EsameLabBasiDiDati/web/studente/ritiro.php">Ritiro</a>
+            <a class="nav-link" href="./ritiro.php">Ritiro</a>
         </li>
     </ul>
 </nav>
