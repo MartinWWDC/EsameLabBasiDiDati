@@ -12,7 +12,7 @@
 
 
 <body>
-    <?php include '../components/checkD.php' ?>
+    <?php include './components/checkD.php' ?>
     <?php include '../public_components/header.php' ?>
 
     <div class="container-fluid">
