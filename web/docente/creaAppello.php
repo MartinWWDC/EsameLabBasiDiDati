@@ -75,6 +75,9 @@
                             <div class="form-group">
                                 <button type="submit" value="sub" class="btn btn-primary btn-block"> Crea Appello </button>
                             </div>
+                            <div>
+                                ATTENZIONE: si potranno modificare le informazioni dell'appelo solo se nessuno studente sarà iscritto altrimenti le informazioni non potranno essere modificate
+                            </div>
                         </form>
                     </article>
                 </div>

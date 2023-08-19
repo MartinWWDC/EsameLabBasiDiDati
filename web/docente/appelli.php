@@ -56,7 +56,7 @@
                                     <strong class="text-gray-dark">'.$row[0].'</strong>
                                     <a href="./assegnaVoto.php?corso='.$row[2].'&dataA='.$row[0].'" class="btn btn-primary">Assegna Voti</a>
     
-                                    <!--<a href="./editAppello.php?corso='.$row[2].'&dataA='.$row[0].'" class="btn btn-secondary">Edit</a>-->
+                                    <a href="./editAppello.php?corso='.$row[2].'&dataA='.$row[0].'" class="btn btn-secondary">Edit</a>
                                 </div>
                                 <span class="d-block">'.$row[1].'</span>
                             </div>

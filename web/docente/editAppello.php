@@ -22,16 +22,29 @@
 
     $params = array($id);
     $result = launchSQL($sql, $params, "get_insegnamenti");
-    $sql = 'select * from appello where "dataA"=$1 and corso=$2';
+    $sql = 'select * from appello a inner join sostiene s on s.id_corso=a.corso and s.data=a."dataA" where a."dataA"=$1 and a.corso=$2';
     $params = array($_GET['dataA'], $_GET['corso']);
     $result2 = launchSQL($sql, $params, "get_appello");
     $desc = "";
-    while ($row = pg_fetch_row($result2)) {
-        $desc = $row[1];
+    $check = pg_num_rows($result2);
+    //echo $check;
+    if ($check==0){
+        $sql = 'select * from appello a where a."dataA"=$1 and a.corso=$2';
+        $params = array($_GET['dataA'], $_GET['corso']);
+        $result2 = launchSQL($sql, $params, "get_appelloC");
+        while ($row = pg_fetch_row($result2)) {
+            //echo "c:".var_dump($row);
+            $desc = $row[1];
+        }
+
     }
+    
     $data = substr($_GET["dataA"], 0, 10);
     $time = substr($_GET["dataA"], 11);
-
+    $dis = "";
+    if ($check != 0) {
+        $dis = 'disabled';
+    }
     //echo var_dump($data);
     //echo $time;
 
@@ -45,12 +58,18 @@
                 </div>
                 <div class="card bg-light">
                     <article class="card-body mx-auto" style="max-width: 800px;">
-                        <?php echo '<form action="update.php?corsoO=' . $_GET['corso'] . '&dataAO=' . $_GET['dataA'] . '" id="appelloForm" method="POST">'; ?>
+
+                        <?php
+                        if ($check != 0) {
+                            echo "non è possibile modificare l'appello  in quando vi sono degli studenti già iscritti";
+                        }
+                        echo '<form action="update.php?corsoO=' . $_GET['corso'] . '&dataAO=' . $_GET['dataA'] . '" id="appelloForm" method="POST">'; ?>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                             </div>
-                            <select class="form-control" name="corso">
+
+                            <select class="form-control" name="corso" <?php echo $dis ?>>
                                 <?php
                                 $selected = $_GET['corso'];
                                 while ($row = pg_fetch_row($result)) {
@@ -70,8 +89,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
+
                             <?php
-                            echo '<input name="luogo" class="form-control" placeholder="Luogo" type="text" value="' . $desc . '" disabled>';
+
+                            echo '<input name="luogo" class="form-control" placeholder="Luogo" type="text" value="' . $desc . '"' . $dis . '>';
                             ?>
                         </div>
                         <div class="form-group input-group">
@@ -79,7 +100,7 @@
                                 <span class="input-group-text"> <i class="fa fa-envelope">Data</i> </span>
                             </div>
 
-                            <?php echo '<input name="dataA" class="form-control" placeholder="Data e ora" type="Date" onchange="formatDate()" value="' . $data . '">';
+                            <?php echo '<input name="dataA" class="form-control" placeholder="Data e ora" type="Date" onchange="formatDate()" value="' . $data . '" ' . $dis . '>';
                             ?>
                         </div>
                         <div class="form-group input-group">
@@ -87,11 +108,11 @@
                                 <span class="input-group-text"> <i class="fa fa-envelope">Ora</i> </span>
                             </div>
 
-                            <?php echo '<input name="oraA" class="form-control" placeholder="Data e ora " type="time" value="' . $time . '">'; ?>
+                            <?php echo '<input name="oraA" class="form-control" placeholder="Data e ora " type="time" value="' . $time . '"' . $dis . '>'; ?>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" value="sub" class="btn btn-primary btn-block"> Aggiorna Appello </button>
+                            <button type="submit" value="sub" class="btn btn-primary btn-block" <?php echo $dis ?>> Aggiorna Appello </button>
                         </div>
                         </form>
                     </article>
