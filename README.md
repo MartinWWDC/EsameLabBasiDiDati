@@ -14,6 +14,10 @@
 - [ ] gestione utenti psql
 - [ ] gestione erorri 
 - [ ] fix date create appello  
+- [ ] fix docente data di nascita timestamp  
+- [ ] fix percorsi assoluti con percorsi relativi
+- [ ] (optional) refactor email generation function 
+- [ ] (optional) studente data di nascita
 
 # Note
 
@@ -269,7 +273,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [ ] finito
 
-- creaInsengamento 
+- creaInsengamento  **Deprecato**
   
   tutti gli insegnamenti vengono creati con associati un docente null
   
@@ -283,7 +287,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [ ] finito
 
-- aggiornaResponsabil
+- aggiornaResponsabil **Deprecato**
   
   - [ ] da implementare
   
@@ -293,7 +297,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   
   - [ ] finito
 
-- CreateStudente
+- CreateStudente **Deprecato**
   
   - [ ] da implementare
   
