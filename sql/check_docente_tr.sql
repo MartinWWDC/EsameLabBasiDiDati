@@ -20,7 +20,4 @@ BEFORE INSERT ON docente
 FOR EACH ROW 
 EXECUTE FUNCTION check_docente();
 
-CREATE TRIGGER check_docente_update_tr
-BEFORE UPDATE ON docente
-FOR EACH ROW 
-EXECUTE FUNCTION check_docente();
+--CREATE TRIGGER check_docente_update_tr BEFORE UPDATE ON docente FOR EACH ROW  EXECUTE FUNCTION check_docente();

@@ -18,6 +18,7 @@
 - [ ] fix percorsi assoluti con percorsi relativi
 - [ ] (optional) refactor email generation function 
 - [ ] (optional) studente data di nascita
+- [ ] remove update appello with transaction
 
 # Note
 
@@ -45,7 +46,7 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
 
 - [ ] check export db
 
-- [ ] convert create function into trigger before insert
+- [x] convert create function into trigger before insert
 
 - [ ] refactoring nomi  
 
@@ -152,7 +153,8 @@ doecente di default per segnalare il mancato assegnamento di un insegnamento è 
   - [x] da testare 
   
   - [ ] finito
-
+- check_docente
+  controlla quando un insengnante viene inserito che abbia associato  un insegnamento
 # Lista Metodi
 
 - produzione carriera completa di uno studente
