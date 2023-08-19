@@ -15,13 +15,19 @@ session_start();
             <a class="nav-link" href="">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./docenti.php">Docenti</a>
+            <a class="nav-link" href="./listDocenti.php">Docenti</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./createDocente.php">Crea Docenti</a>
+            <a class="nav-link" href="./creaDocente.php">Crea Docenti</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Studenti</a>
+            <a class="nav-link" href="./listStudenti.php">Studenti</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./creaStudente.php">Crea Studente</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./listStudentiarch.php">Archivio Studenti</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="./creaCorso.php">Corsi</a>

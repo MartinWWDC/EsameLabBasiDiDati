@@ -35,7 +35,7 @@
                                 <div class="col-md-6 mx-auto">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form method="POST" action="create.php">
+                                            <form method="POST" action="docente.php">
                                                 <div class="form-group">
                                                     <label>Nome docente</label>
                                                     <input type="text" class="form-control" name="nome" aria-describedby="emailHelp" placeholder="Enter email">
