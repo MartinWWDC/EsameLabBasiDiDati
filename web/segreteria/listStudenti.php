@@ -74,6 +74,7 @@
                                                     
                                                 </tbody>
                                             </table>
+                                            <a type="button" class="btn btn-success" href="./carrieraSt.php?matricola='.$row[0].'">Carriera</a>
                                             <a type="button" class="btn btn-warning" href="./archiviaArc.php?matricola='.$row[0].'">Archivia</a>
 
                                         </div>

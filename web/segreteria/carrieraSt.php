@@ -26,7 +26,7 @@
 
                 $idLaurea = "";
 
-                $sql = 'select * from "studente_arc" where matricola=$1';
+                $sql = 'select * from "Studente" where matricola=$1';
                 $params = array($_GET["matricola"]);
                 $result = launchSQL($sql, $params, "get_studente");
                 while ($row = pg_fetch_row($result)) {
@@ -60,34 +60,28 @@
                     <div class="album py-5 bg-light">
                         <div class="container">
                         <div class="my-3 p-3 bg-white rounded box-shadow">
-                                <h6 class="border-bottom border-gray pb-2 mb-0">Carriera Valida</h6>
+                                <h6 class="border-bottom border-gray pb-2 mb-0">Carriera Completa</h6>
                             <?php 
-                            
-                            $sql='select * from get_carriera_valida_archivio($1) order by "datac" desc';
-                            $params=array($_GET['matricola']); 
+                            $sql='SELECT * FROM get_carriera_valida($1)';
+                            $params=array($_SESSION['user'][0]); 
                             $result=launchSQL($sql,$params,"get_carriera_valida");
                             while ($row = pg_fetch_row($result)) {
                                 //echo var_dump($row);
-                                echo ' 
+                                echo ' <div class="my-3 p-3 bg-white rounded box-shadow">
+                                <h6 class="border-bottom border-gray pb-2 mb-0">Carriera Valida</h6>
                                 <div class="media text-muted pt-3">
                                     <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                         <div class="d-flex justify-content-between align-items-center w-100">
-                                        <strong class="text-gray-dark">'.$row[1].'</strong>
-                                        <strong class="text-gray-dark">'.$row[3].'</strong>
-                                        <button class="btn btn-light">'.$row[2].'</button>
+                                            <strong class="text-gray-dark">'.$row[1].'</strong>
+                                            <button class="btn btn-light">'.$row[2].'</button>
                                         </div>
                                     </div>
                                 </div>
                                 
-                            ';
+                            </div>';
                             }
-                            ?>
-                        </div>
-                        <div class="my-3 p-3 bg-white rounded box-shadow">
-                                <h6 class="border-bottom border-gray pb-2 mb-0">Carriera Completa</h6>
-                            <?php 
                             
-                            $sql='select * from get_carriera_archivio($1) order by "datac" desc';
+                            $sql='select * from get_carriera($1) order by "data_sostenimento" desc';
                             $params=array($_GET['matricola']); 
                             $result=launchSQL($sql,$params,"get_carriera");
                             while ($row = pg_fetch_row($result)) {

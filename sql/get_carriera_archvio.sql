@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION get_carriera_valida_archivio(id_studente varchar)
+CREATE OR REPLACE FUNCTION get_carriera_archivio(id_studente varchar)
 RETURNS TABLE(id_insegnamento integer, nome_insegnamento varchar, voto voto, dataC date) AS $$
 BEGIN
 	RETURN QUERY
@@ -9,4 +9,3 @@ BEGIN
 	WHERE v.studente = id_studente;
 END;
 $$ LANGUAGE plpgsql;
-select * from get_carriera_valida_archivio('34')
