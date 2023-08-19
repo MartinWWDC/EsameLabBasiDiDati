@@ -47,7 +47,7 @@ CREATE TABLE "Studente" (
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
   "cfu" integer DEFAULT 0,
-  "cellulare" varchar(255) UNIQUE NOT NULL,
+  "dataN" date NOT NULL,
   "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id")
 );
 
@@ -76,14 +76,14 @@ CREATE TABLE "studente_arc" (
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
   "cfu" integer DEFAULT 0,
-  "cellulare" varchar(255) UNIQUE NOT NULL,
+  "dataN" date NOT NULL,
   "periodoInattivita" interval,
   "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id")
 );
 
 CREATE TABLE "voti_arc" (
   "id" SERIAL  PRIMARY KEY,
-  "voto" INTEGER NOT NULL,
+  "voto" voto NOT NULL,
   "dataEsame" date,
   "studente" varchar(6) REFERENCES "studente_arc" ("matricola")
 );
@@ -97,4 +97,4 @@ CREATE TABLE "insegnamento_arc" (
 
 ALTER TABLE "voti_arc" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
-ALTER TABLE "docente"  ADD COLUMN "dataDiNascita" timestamp;
+ALTER TABLE "docente"  ADD COLUMN "dataDiNascita" date;
