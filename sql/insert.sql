@@ -1,4 +1,4 @@
---insert cordo di luarea
+--DEPRECATI
 INSERT INTO "corsoDiLaurea" ("id", "nome", "durata", "anno")
 VALUES (0,'informatica', 3, '2022');
 INSERT INTO "corsoDiLaurea" ("id", "nome", "durata", "anno")
