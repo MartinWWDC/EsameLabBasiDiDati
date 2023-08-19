@@ -71,7 +71,7 @@
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
                             <?php
-                            echo '<input name="luogo" class="form-control" placeholder="Luogo" type="text" value="' . $desc . '">';
+                            echo '<input name="luogo" class="form-control" placeholder="Luogo" type="text" value="' . $desc . '" disabled>';
                             ?>
                         </div>
                         <div class="form-group input-group">

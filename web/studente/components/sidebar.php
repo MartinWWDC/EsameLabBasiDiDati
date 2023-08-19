@@ -23,5 +23,8 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="./ritiro.php">Ritiro</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./editProf.php">Edit</a>
+        </li>
     </ul>
 </nav>
