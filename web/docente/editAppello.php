@@ -12,10 +12,10 @@
 
 
 <body>
-    <?php include '../components/checkD.php' ?>
-    <?php include '../../public_components/header.php' ?>
+    <?php include './components/checkD.php' ?>
+    <?php include '../public_components/header.php' ?>
     <?php
-    require  '../../public_components/utility.php';
+    require  '../public_components/utility.php';
     session_start();
     $sql = 'select * from insegnamento where responsabile=$1';
     $id = $_SESSION['user'][0];
@@ -38,7 +38,7 @@
     ?>
     <div class="container-fluid">
         <div class="row">
-            <?php include '../components/sidebar.php' ?>
+            <?php include './components/sidebar.php' ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="pt-3 pb-2 mb-3">
                     <h2>Modifica Appello</h2>

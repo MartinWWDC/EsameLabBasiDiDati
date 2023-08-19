@@ -12,10 +12,10 @@
 
 
 <body>
-    <?php include '../../public_components/checkD.php' ?>
-    <?php include '../../public_components/header.php' ?>
+    <?php include './components/checkD.php' ?>
+    <?php include '../public_components/header.php' ?>
     <?php
-    require  '../../public_components/utility.php';
+    require  '../public_components/utility.php';
     session_start();
     $dataA = $_GET['dataA'];
     $corso = $_GET['corso'];

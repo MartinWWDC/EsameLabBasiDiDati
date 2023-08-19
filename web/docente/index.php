@@ -81,8 +81,8 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <a type="button" class="btn btn-secondary" href="./appello?id='.$row[0].'">Gestisci Appelli</a>
-                                                    <a type="button" class="btn btn-success href="./appello/creaApello.php">Crea Appello</a>
+                                                    <a type="button" class="btn btn-secondary" href="./appelli.php?id='.$row[0].'">Gestisci Appelli</a>
+                                                    <a type="button" class="btn btn-success href="./creaApello.php">Crea Appello</a>
 
                                                 </div>
                                             </div>

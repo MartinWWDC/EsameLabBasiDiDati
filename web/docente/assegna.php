@@ -15,7 +15,7 @@
     <?php session_start();
     include './components/checkD.php'
     ?>
-    <?php include '../public_components/header.php'; ?>
+    <?php include './public_components/header.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -23,7 +23,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
                 <?php
-                require  '../../public_components/utility.php';
+                require  '../public_components/utility.php';
 
                 session_start();
                 $corso = $_GET['corso'];
