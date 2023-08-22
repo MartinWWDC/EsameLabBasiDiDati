@@ -26,7 +26,7 @@
                 <main role="main">
                     <section class="jumbotron text-center">
                         <div class="container">
-                            <h1 class="jumbotron-heading">Lista Insegnanti Insegnate</h1>
+                            <h1 class="jumbotron-heading">Lista Insegnanti</h1>
                         </div>
                     </section>
                     <div class="album py-5 bg-light">
@@ -77,7 +77,7 @@
                                                     
                                                 </tbody>
                                             </table>
-                                            <a type="button" class="btn btn-secondary" href="./appello?id=' . $row[0] . '">Edit</a>
+                                            
                                             <a type="button" class="btn btn-success" href="./associaInsegnamento.php?email='.$row[0].'">Associa Inseganemto</a>
 
                                         </div>

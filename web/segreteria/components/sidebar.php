@@ -37,10 +37,11 @@ session_start();
             <a class="nav-link" href="./listStudentiarch.php">Archivio Studenti</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./creaCorso.php">Corsi</a>
+            <a class="nav-link" href="./creaInsegnamento.php">Crea Insegnamento</a>
         </li>
-        
-     
+        <li class="nav-item">
+            <a class="nav-link" href="./listInsegnamenti.php">Insegnamenti</a>
+        </li> 
 
         <li class="nav-item">
             <a class="nav-link" href="./editProf.php">Edit</a>
