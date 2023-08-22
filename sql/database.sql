@@ -98,3 +98,4 @@ CREATE TABLE "insegnamento_arc" (
 ALTER TABLE "voti_arc" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "docente"  ADD COLUMN "dataDiNascita" date;
+ALTER TABLE "corsoDiLaurea"  ADD COLUMN "desc" text;

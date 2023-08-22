@@ -19,10 +19,15 @@
 - [ ] (optional) refactor email generation function 
 - [ ] (optional) studente data di nascita
 - [ ] remove update appello with transaction
+- [ ] implement propedeuticità
+- [ ] remove responsabile from insengamento
 
 # Note
 
 doecente di default per segnalare il mancato assegnamento di un insegnamento è  'null'  
+
+
+
 
 # Road Map
 

@@ -14,6 +14,13 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="">Dashboard</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="./listLauree.php">Laure</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="./creaLauree.php">Crea Lauree</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="./listDocenti.php">Docenti</a>
         </li>
@@ -32,6 +39,9 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="./creaCorso.php">Corsi</a>
         </li>
+        
+     
+
         <li class="nav-item">
             <a class="nav-link" href="./editProf.php">Edit</a>
         </li>
