@@ -15,12 +15,14 @@
 - [ ] gestione erorri 
 - [ ] fix date create appello  
 - [ ] fix docente data di nascita timestamp  
-- [ ] fix percorsi assoluti con percorsi relativi
+- [x] fix percorsi assoluti con percorsi relativi
 - [ ] (optional) refactor email generation function 
 - [ ] (optional) studente data di nascita
 - [ ] remove update appello with transaction
-- [ ] implement propedeuticità
-- [ ] remove responsabile from insengamento
+- [x] implement propedeuticità
+- [ ] fix style
+- [ ] sostituisci cellulare con data di nascità in Studente e termina il creaStudente.php
+- [x] remove responsabile from insengamento
 
 # Note
 
