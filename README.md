@@ -33,6 +33,14 @@ Propedeuticità:
 - id_insegnamento: insegnamento normale
 -	id_insegnamento_propedeutico: insegnamento che bisogna aver conseguito per poter iscriversi all'insegnamento 'insegnamento normale'
 
+## Note Installazione
+
+import db:
+
+t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
+
+
+
 
 # Road Map
 
@@ -41,24 +49,21 @@ Propedeuticità:
 - [x] setup ambiente 
 
 - [x] create domanins
-
-- [ ] fix permessi utenti 
+ 
 
 - [ ] popolare db
 
 - [x] sviluppo trigger
 
-- [ ] sviluppo funzioni
+- [x] sviluppo funzioni
 
-- [ ] sviluppo interfaccia
+- [x] sviluppo interfaccia
 
-- [ ] fix nome colonne
-
-- [ ] check export db
+- [x] check export db
 
 - [x] convert create function into trigger before insert
 
-- [ ] refactoring nomi  
+- [x] refactoring nomi  
 
 # Lista Presupposti
 
