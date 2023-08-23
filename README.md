@@ -29,6 +29,9 @@
 doecente di default per segnalare il mancato assegnamento di un insegnamento è  'null'  
 
 
+Propedeuticità:
+- id_insegnamento: insegnamento normale
+-	id_insegnamento_propedeutico: insegnamento che bisogna aver conseguito per poter iscriversi all'insegnamento 'insegnamento normale'
 
 
 # Road Map
