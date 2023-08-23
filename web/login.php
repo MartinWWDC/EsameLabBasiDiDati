@@ -65,7 +65,7 @@
                 $_SESSION["type"]= $type;
                 
                 echo "testo";
-         
+                echo var_dump($_SESSION);
                 if ($type == 'Studente') {
                     header('Location: studente/');
 
