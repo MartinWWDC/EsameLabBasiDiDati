@@ -34,6 +34,7 @@
 
                 $result = launchSQL($SQL, $result, "remove_res");
                 //header("Location: index.php");
+                header("Location: ./listInsegnamenti.php");
 
 
                 ?>

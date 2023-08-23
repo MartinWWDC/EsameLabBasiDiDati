@@ -9,5 +9,5 @@ $sql = 'UPDATE insegnamento SET "responsabile"=$1 where id=$2';
 
 $result = launchSQL($sql, $params, "get_insegnamenti");
 echo "done";
-header("Location: ../listIns.php")
+header("Location: ./listInsegnamenti.php")
 ?>
