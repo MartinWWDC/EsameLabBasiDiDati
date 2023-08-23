@@ -43,6 +43,13 @@
                                     if($row[5]==NULL){
                                         $associa='<a type="button" class="btn btn-success" href="./assegnaResponsabile.php?idIns='.$row[0].'">assegna responsabile</a>';
                                     }
+                                    $sql = 'select * from get_propedeuticità($1)';
+                                    $params = array($row[0]);
+                                    $res = launchSQL($sql, $params, "get_prop" . random_int(0, 10000));
+                                    $prop = "";
+                                    while ($r = pg_fetch_row($res)) {
+                                      $prop .= " " . $r[1];
+                                    }
                                     //echo var_dump($row);
                                     echo '
                                             	<div class="col-md-4">
@@ -75,6 +82,10 @@
                                                         <td colspan="2">' . $row[12] . '</td>
                                                     </tr>
                                                     <tr>
+                                                        <th scope="row">Propedeuticità:</th>
+                                                        <td colspan="2">' . $prop . '</td>
+                                                    </tr>
+                                                    <tr>
                                                         <th scope="row">responsabile:</th>
                                                         <td colspan="2">' . $row[8] . '<br />'.$row[9].'</td>
                                                     </tr>
@@ -84,6 +95,8 @@
                                             <div>
                                             <a type="button" class="btn btn-secondary" href="./associaPropedeuticità.php?idIns='.$row[0].'">associa propedeuticità</a>
                                             <a type="button" class="btn btn-warning" href="./revocaResponsabile.php?idIns='.$row[0].'">revoca responsabile</a>
+                                            <a type="button" class="btn btn-primary" href="./gestisiPropedeuticità.php?idIns='.$row[0].'">Gestisci propedeuticità</a>
+
                                             '.$associa.'
 
                                             </div>
