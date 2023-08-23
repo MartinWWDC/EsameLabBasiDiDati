@@ -47,8 +47,8 @@ CREATE TABLE "Studente" (
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
   "cfu" integer DEFAULT 0,
-  "dataN" date NOT NULL,
-  "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id")
+  "idLaurea" xINTEGER REFERENCES "corsoDiLaurea" ("id"),
+  "dataN" date NOT NULL
 );
 
 CREATE TABLE "appello" (

@@ -7,8 +7,13 @@
     <title>Document</title>
     <!-- Includi i file CSS di Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <style>
+        .spaced-button {
+            margin-bottom: 3px;
+        }
+    </style>
 </head>
+
 
 <body>
     <?php include '../components/checkD.php' ?>
@@ -37,18 +42,18 @@
                                 $SQL = 'select * from insegnamento i left join docente d on i.responsabile=d.email inner join "corsoDiLaurea" cL on cL.id=i."corsoDiAppartenenza"';
                                 $params = array();
                                 $result = launchSQL($SQL, $params, "get_docenti");
-                                
+
                                 while ($row = pg_fetch_row($result)) {
-                                    $associa='';
-                                    if($row[5]==NULL){
-                                        $associa='<a type="button" class="btn btn-success" href="./assegnaResponsabile.php?idIns='.$row[0].'">assegna responsabile</a>';
+                                    $associa = '';
+                                    if ($row[5] == NULL) {
+                                        $associa = '<a type="button" class="btn btn-success" href="./assegnaResponsabile.php?idIns=' . $row[0] . '">assegna responsabile</a>';
                                     }
                                     $sql = 'select * from get_propedeuticità($1)';
                                     $params = array($row[0]);
                                     $res = launchSQL($sql, $params, "get_prop" . random_int(0, 10000));
                                     $prop = "";
                                     while ($r = pg_fetch_row($res)) {
-                                      $prop .= " " . $r[1];
+                                        $prop .= " " . $r[1];
                                     }
                                     //echo var_dump($row);
                                     echo '
@@ -67,7 +72,7 @@
                                                    
                                                     <tr>
                                                         <th scope="row">Nome Insegnamento</th>
-                                                        <td>' . $row[1] .'</td>
+                                                        <td>' . $row[1] . '</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Anno Consigliato</th>
@@ -87,18 +92,18 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">responsabile:</th>
-                                                        <td colspan="2">' . $row[8] . '<br />'.$row[9].'</td>
+                                                        <td colspan="2">' . $row[8] . '<br />' . $row[9] . '</td>
                                                     </tr>
                                                     
                                                 </tbody>
                                             </table>
-                                            <div>
-                                            <a type="button" class="btn btn-secondary" href="./associaPropedeuticità.php?idIns='.$row[0].'">associa propedeuticità</a>
-                                            <a type="button" class="btn btn-warning" href="./revocaResponsabile.php?idIns='.$row[0].'">revoca responsabile</a>
-                                            <a type="button" class="btn btn-primary" href="./gestisiPropedeuticità.php?idIns='.$row[0].'">Gestisci propedeuticità</a>
+                                            <div class="d-grid gap-2 d-md-block">
+                                                <a type="button" class="btn btn-secondary spaced-button" href="./associaPropedeuticità.php?idIns=' . $row[0] . '">associa propedeuticità</a>
+                                                <a type="button" class="btn btn-warning spaced-button" href="./revocaResponsabile.php?idIns=' . $row[0] . '">revoca responsabile</a>
+                                                <a type="button" class="btn btn-primary spaced-button" href="./gestisiPropedeuticità.php?idIns=' . $row[0] . '">Gestisci propedeuticità</a>
 
-                                            '.$associa.'
-
+                                                ' . $associa . '
+                                                
                                             </div>
       
                                         </div>

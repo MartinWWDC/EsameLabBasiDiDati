@@ -20,8 +20,8 @@
 - [ ] (optional) studente data di nascita
 - [ ] remove update appello with transaction
 - [x] implement propedeuticità
-- [ ] fix style
-- [ ] sostituisci cellulare con data di nascità in Studente e termina il creaStudente.php
+- [x] fix style
+- [x] sostituisci cellulare con data di nascità in Studente e termina il creaStudente.php
 - [x] remove responsabile from insengamento
 
 # Note

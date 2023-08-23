@@ -45,12 +45,12 @@
                                                     <input type="text" class="form-control" name="cognome" aria-describedby="emailHelp" placeholder="Inserisci il cognome">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Data Nasciata Docente</label>
+                                                    <label>Data Nasciata</label>
                                                     <input type="date" class="form-control" name="dataN" aria-describedby="emailHelp" placeholder="Enter email">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Corso di laurea</label>
-                                                    <select class="form-select-input" name="insegnamento">
+                                                    <select class="form-select-input" name="laurea">
                                                         <?php
                                                         $SQL = 'select * from "corsoDiLaurea"';
                                                         $params = array();
