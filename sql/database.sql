@@ -15,7 +15,8 @@ CREATE TABLE "docente" (
   "email" VARCHAR(255) PRIMARY KEY,
   "pass" VARCHAR(255) NOT NULL,
   "nome" VARCHAR(255) NOT NULL,
-  "cognome" VARCHAR(255) NOT NULL
+  "cognome" VARCHAR(255) NOT NULL,
+   "dataDiNascita" date
 );
 
 CREATE TABLE "corsoDiLaurea" (
