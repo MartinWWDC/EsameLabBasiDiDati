@@ -26,5 +26,8 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="./editProf.php">Edit</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./richiediLaurea.php">Rchiedi Laurea</a>
+        </li>
     </ul>
 </nav>

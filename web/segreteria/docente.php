@@ -31,7 +31,7 @@
                 $insegnamento = $_POST["insegnamento"];
                 $password = $_POST["password"];
                 $passwordC = $_POST["paswordConfirmation"];
-                $email = $nome . '.' . $cognome . '@docente.com';
+                $email = $nome . '.' . $cognome .random_int(1,1000). '@docente.com';
                 $params = array($email, $password, $nome, $cognome, $dataN, $insegnamento);
                 //echo var_dump($params);
                 $SQL = "select * from create_docente($1,$2, $3, $4, $5,$6)";

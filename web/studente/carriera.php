@@ -27,7 +27,7 @@
 
                 $studente = $_SESSION["user"];
                 $sql = 'select * from "corsoDiLaurea" where id=$1';
-                $params = array($studente[7]);
+                $params = array($studente[6]);
                 $result = launchSQL($sql, $params, "get_nomeLaurea");
                 $nomeLaurea = "";
                 while ($row = pg_fetch_row($result)) {

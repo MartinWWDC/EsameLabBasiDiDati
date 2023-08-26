@@ -27,7 +27,7 @@
 
                 $studente = $_SESSION["user"];
                 $sql = 'select * from "corsoDiLaurea" where id=$1';
-                $params = array($studente[7]);
+                $params = array($studente[6]);
                 $result = launchSQL($sql, $params, "get_nomeLaurea");
                 $nomeLaurea = "";
                 while ($row = pg_fetch_row($result)) {
@@ -64,7 +64,7 @@
                                     AND i."corsoDiAppartenenza" = $2
                                     AND s.id_studente IS NULL
                                 ';
-                                $params = array($todayTimeStamp, $_SESSION['user'][7], $_SESSION['user'][0]);
+                                $params = array($todayTimeStamp, $_SESSION['user'][6], $_SESSION['user'][0]);
                                 $result = launchSQL($sql, $params, "get_appelli");
                                 while ($row = pg_fetch_row($result)) {
                                     //echo var_dump($row);

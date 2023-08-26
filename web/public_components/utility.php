@@ -12,7 +12,7 @@ function launchSQL(string $sql, array $params,string $name){
    $result = pg_prepare($cn, $name, $sql);
    if (!$result) {
 
-        echo "An error occurred in preparing the query.\n";
+        echo "An error occurred in preparing the query \n".$name;
         echo pg_last_error($cn); // Stampa l'errore PostgreSQL
        exit;
    }
@@ -21,7 +21,7 @@ function launchSQL(string $sql, array $params,string $name){
 
 
    if (!$result) {
-       echo "An error occurred in executing the query.\n";
+       echo "An error occurred in executing the query.\n".$name;
        echo pg_last_error($cn); // Stampa l'errore PostgreSQL
        exit;
 
