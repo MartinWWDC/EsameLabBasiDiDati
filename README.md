@@ -23,7 +23,8 @@
 - [x] fix style
 - [x] sostituisci cellulare con data di nascità in Studente e termina il creaStudente.php
 - [x] remove responsabile from insengamento
-
+- [X] FIX ARCHIVIO
+ 
 # Note
 
 doecente di default per segnalare il mancato assegnamento di un insegnamento è  'null'  
