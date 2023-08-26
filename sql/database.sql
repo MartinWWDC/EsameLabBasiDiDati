@@ -77,9 +77,9 @@ CREATE TABLE "studente_arc" (
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
   "cfu" integer DEFAULT 0,
-  "dataN" date NOT NULL,
   "periodoInattivita" interval,
-  "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id")
+  "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id"),
+  "dataN" date NOT NULL
 );
 
 CREATE TABLE "voti_arc" (

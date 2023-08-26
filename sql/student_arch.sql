@@ -39,7 +39,7 @@ DECLARE
 BEGIN
     periodo_inattivita := calcola_periodo_inattivita(OLD.matricola);
     
-    INSERT INTO studente_arc VALUES (OLD.matricola, OLD.email,OLD.pass, OLD.nome, OLD.cognome,OLD.cfu, OLD.dataN, periodo_inattivita,OLD."idLaurea");
+    INSERT INTO studente_arc VALUES (OLD.matricola, OLD.email,OLD.pass, OLD.nome, OLD.cognome,OLD.cfu, periodo_inattivita,OLD."idLaurea", OLD."dataN");
 
     FOR record_voto IN SELECT * FROM get_carriera(OLD.matricola)
     LOOP
