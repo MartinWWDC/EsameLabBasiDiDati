@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE OR REPLACE FUNCTION check_docente()
 RETURNS trigger AS $$
 DECLARE
@@ -7,7 +8,7 @@ BEGIN
     FROM insegnamento
     WHERE responsabile = NEW.email;
 
-    IF counter = 0 THEN
+    IF counter > 0 THEN
         RETURN NEW;
     ELSE
         RAISE EXCEPTION 'docente non associato a nessun insegnamento'; 
