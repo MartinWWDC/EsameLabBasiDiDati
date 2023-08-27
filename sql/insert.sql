@@ -35,3 +35,6 @@ INSERT INTO "sostiene" ("id_corso", "data", "id_studente", "voto")
 VALUES (1, '2023-05-20 10:00:00', '123456', 30);
 iNSERT INTO "sostiene" ("id_corso", "data", "id_studente", "voto")
 VALUES (1, '2023-05-29 10:00:00', '123456', 10);
+
+
+select * from create_docente('docen00te@example.com', 'password', 'mario', 'rossi','2010-05-01',3);
