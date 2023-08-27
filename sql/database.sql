@@ -49,7 +49,7 @@ CREATE TABLE "Studente" (
   "nome" varchar(255) NOT NULL,
   "cognome" varchar(255) NOT NULL,
   "cfu" integer DEFAULT 0,
-  "idLaurea" xINTEGER REFERENCES "corsoDiLaurea" ("id"),
+  "idLaurea" INTEGER REFERENCES "corsoDiLaurea" ("id"),
   "dataN" date NOT NULL
 );
 
@@ -102,4 +102,4 @@ ALTER TABLE "sostiene" ALTER COLUMN "voto" set DATA TYPE voto;
 ALTER TABLE "docente"  ADD COLUMN "dataDiNascita" date;
 ALTER TABLE "corsoDiLaurea"  ADD COLUMN "desc" text;
 
-ALTER TABLE "insegnamento" ALTER CONSTRAINT "responsavile" DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "insegnamento" ALTER CONSTRAINT "insegnamento_responsabile_fkey" DEFERRABLE INITIALLY DEFERRED;
