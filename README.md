@@ -287,7 +287,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] add transaction
+  - [x] add transaction
   
   - [ ] finito
 
