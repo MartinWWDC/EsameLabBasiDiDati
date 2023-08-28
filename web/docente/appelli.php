@@ -38,8 +38,7 @@
                     $sql = 'select * from appello a inner join insegnamento i on a.corso=i.id where a.corso=$1 order by a."dataA"';
                     $params = array($id);
                     $result = launchSQL($sql, $params, "get_appello".rand());
-                    
-                    
+                
     
                     $c=0;
                         
@@ -64,7 +63,7 @@
                         $c++;
                         }
                         echo '</div>
-                        </div>';
+                        ';
                        
                         
                      

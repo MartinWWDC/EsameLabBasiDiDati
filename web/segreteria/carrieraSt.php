@@ -80,7 +80,7 @@
                                 
                             }
                             ?>
-                                                        </div>
+                        </div>
 
                             <h6 class="border-bottom border-gray pb-2 mb-0">Carriera Completa</h6>
                             <?php

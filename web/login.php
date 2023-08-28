@@ -63,7 +63,7 @@
             while ($row = pg_fetch_row($result)) {
                 $_SESSION["user"] = $row;
                 $_SESSION["type"]= $type;
-                
+                echo var_dump($row);
                 echo "testo";
                 echo var_dump($_SESSION);
                 if ($type == 'Studente') {
