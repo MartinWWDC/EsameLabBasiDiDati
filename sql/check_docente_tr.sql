@@ -1,4 +1,5 @@
 -- SQLBook: Code
+
 CREATE OR REPLACE FUNCTION check_docente()
 RETURNS trigger AS $$
 DECLARE
@@ -20,5 +21,6 @@ CREATE TRIGGER check_docente_insert_tr
 BEFORE INSERT ON docente
 FOR EACH ROW 
 EXECUTE FUNCTION check_docente();
+
 
 --CREATE TRIGGER check_docente_update_tr BEFORE UPDATE ON docente FOR EACH ROW  EXECUTE FUNCTION check_docente();

@@ -5,8 +5,9 @@ BEGIN
     SELECT i.id, i."nomeInsegnamento", s.voto::numeric,s.data::date
     FROM insegnamento i 
     INNER JOIN sostiene s ON i.id = s.id_corso
-    WHERE s.id_studente = id_studenteP;
-    order by s.data
+    WHERE s.id_studente = id_studenteP
+    AND s.voto is NOT NULL
+    order by s.data;
 END;
 $$ LANGUAGE plpgsql;
 
