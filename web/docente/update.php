@@ -34,6 +34,8 @@
             $sql = 'UPDATE appello SET "dataA"='."'".$dataA."'".', "luogo"=$1, "corso"=$2 where "dataA"=$3 AND"corso"=$4';
             $result = launchSQL($sql, $params, "get_insegnamenti");
             echo "done";
+            header("Location: ./appelli.php");
+
             ?>
             </main>
         </div>

@@ -38,7 +38,6 @@
 
         $sql = 'select * from insegnamento where "corsoDiAppartenenza"=$1 order by "annoConsigliato"';
         $result = launchSQL($sql, $params, "get_insengamenti");
-        echo "fungwe";
 
         //echo var_dump($studente);
         ?>

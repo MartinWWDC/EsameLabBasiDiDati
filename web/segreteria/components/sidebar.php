@@ -12,13 +12,9 @@ session_start();
     <!-- Links della sidebar -->
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="">Dashboard</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="./listLauree.php">Laure</a>
+            <a class="nav-link" href="./listLauree.php">Lauree</a>
         </li><li class="nav-item">
-            <a class="nav-link" href="./creaLauree.php">Crea Lauree</a>
+            <a class="nav-link" href="./creaLauree.php">Crea Laurea</a>
         </li>
 
         <li class="nav-item">
@@ -36,13 +32,13 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="./listStudentiarch.php">Archivio Studenti</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./creaInsegnamento.php">Crea Insegnamento</a>
-        </li>
+        
         <li class="nav-item">
             <a class="nav-link" href="./listInsegnamenti.php">Insegnamenti</a>
         </li> 
-
+        <li class="nav-item">
+            <a class="nav-link" href="./creaInsegnamento.php">Crea Insegnamento</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="./editProf.php">Edit</a>
         </li>

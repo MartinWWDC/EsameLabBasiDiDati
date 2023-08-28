@@ -43,8 +43,11 @@
                                 <select class="form-control" name="corso">
                                     <?php
                                     while ($row = pg_fetch_row($result)) {
-                                        //echo var_dump($row);
-                                        echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+                                        $selec="";
+                                        if($row[0]==$_GET['id']){
+                                            $selec="selected";
+                                        }
+                                        echo '<option value="' . $row[0] . '"'.$selec.'>' . $row[1] . '</option>';
                                     }
 
                                     ?>
@@ -76,7 +79,7 @@
                                 <button type="submit" value="sub" class="btn btn-primary btn-block"> Crea Appello </button>
                             </div>
                             <div>
-                                ATTENZIONE: si potranno modificare le informazioni dell'appelo solo se nessuno studente sarà iscritto altrimenti le informazioni non potranno essere modificate
+                                ATTENZIONE: si potranno modificare le informazioni relative all'appelo solo se nessuno studente sarà iscritto altrimenti le informazioni non potranno essere modificate
                             </div>
                         </form>
                     </article>
@@ -101,21 +104,10 @@
                 event.preventDefault(); // Impedisce l'invio del modulo se i campi non sono completi
                 alert('Completa tutti i campi prima di inviare il modulo.');
             }
-            if(form.dataA.value<=currentDate){
-                alert('Non può creare un appello per un giorno passato');
-            }
+           
         });
     });
 
-    function formatDate() {
-        var input = document.getElementById("myDateInput");
-        var inputValue = input.value; // Formato: "yyyy-mm-dd"
-
-        var parts = inputValue.split("-");
-        var formattedDate = parts[2] + "/" + parts[1] + "/" + parts[0];
-
-        input.value = formattedDate;
-    }
 
 </script>
 <!-- Includi i file JavaScript di Bootstrap -->

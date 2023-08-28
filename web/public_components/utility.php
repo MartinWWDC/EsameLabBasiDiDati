@@ -21,12 +21,27 @@ function launchSQL(string $sql, array $params,string $name){
 
 
    if (!$result) {
-       echo "An error occurred in executing the query.\n".$name;
-       echo pg_last_error($cn); // Stampa l'errore PostgreSQL
+        //echo "An error occurred in executing the query.\n".$name;
+        //echo pg_last_error($cn); // Stampa l'errore PostgreSQL
+        $queryErrorMessage = pg_last_error($cn); // Stampa l'errore PostgreSQL
+
+        $startMarker = "ERROR:";
+        $endMarker = "CONTEXT:";
+
+        $startPos = strpos($queryErrorMessage, $startMarker);
+        $endPos = strpos($queryErrorMessage, $endMarker);
+
+        if ($startPos !== false && $endPos !== false) {
+            $errorText = substr($queryErrorMessage, $startPos + strlen($startMarker), $endPos - $startPos - strlen($startMarker));
+            $errorText = trim($errorText);
+            echo $errorText;
+        } else {
+            echo "Error message format not recognized.";
+        }
+
        exit;
 
    }
    return $result;
 
 }
-?>

@@ -37,10 +37,11 @@
                 $SQL = "select * from create_docente($1,$2, $3, $4, $5,$6)";
                 $result = launchSQL($SQL, $params, "create");
 
-                //header("Location: index.php");
+                //header("Location: listDocenti.php");
                 ?>
 
-
+                account creato! <br />
+                email di login=<?php echo $email; ?>
 
             </main>
         </div>

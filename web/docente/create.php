@@ -31,7 +31,7 @@
             $params = array($dataA, $place, $corso);
             $sql = 'INSERT INTO appello ("dataA", "luogo", "corso") VALUES ($1, $2, $3)';
             $result = launchSQL($sql, $params, "get_insegnamenti");
-
+            header("Location: ./appelli.php")
             ?>
             </main>
         </div>

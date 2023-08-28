@@ -38,15 +38,15 @@
                                             <form method="POST" action="docente.php">
                                                 <div class="form-group">
                                                     <label>Nome docente</label>
-                                                    <input type="text" class="form-control" name="nome" aria-describedby="emailHelp" placeholder="Inserisci Nome">
+                                                    <input type="text" class="form-control" name="nome"  placeholder="Inserisci Nome">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Cognome docente</label>
-                                                    <input type="text" class="form-control" name="cognome" aria-describedby="emailHelp" placeholder="Inserisci cognome">
+                                                    <input type="text" class="form-control" name="cognome"  placeholder="Inserisci cognome">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Data Nasciata Docente</label>
-                                                    <input type="date" class="form-control" name="dataN" aria-describedby="emailHelp" placeholder="Enter email">
+                                                    <input type="date" class="form-control" name="dataN">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Insegnamento</label>

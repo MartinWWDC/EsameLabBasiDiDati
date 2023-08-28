@@ -37,7 +37,7 @@
                                 $SQL = 'select * from "Studente" s inner join "corsoDiLaurea" c on s."idLaurea"=c.id';
                                 $params = array();
                                 $result = launchSQL($SQL, $params, "get_studenti");
-                                
+
                                 while ($row = pg_fetch_row($result)) {
 
                                     //echo var_dump($row);
@@ -54,10 +54,13 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                   
+                                                <tr>
+                                                <th scope="row">Email Studnte</th>
+                                                    <td>' . $row[3].'.'.$row[4].'<br />@studente.com</td>
+                                                </tr>
                                                     <tr>
                                                         <th scope="row">Nome Insegnamente</th>
-                                                        <td>' . $row[3] .'  '. $row[4] . '</td>
+                                                        <td>' . $row[3] . '  ' . $row[4] . '</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Data Nascita</th>
@@ -74,8 +77,8 @@
                                                     
                                                 </tbody>
                                             </table>
-                                            <a type="button" class="btn btn-success" href="./carrieraSt.php?matricola='.$row[0].'">Carriera</a>
-                                            <a type="button" class="btn btn-warning" href="./archiviaArc.php?matricola='.$row[0].'">Archivia</a>
+                                            <a type="button" class="btn btn-success" href="./carrieraSt.php?matricola=' . $row[0] . '">Carriera</a>
+                                            <a type="button" class="btn btn-warning" href="./archiviaArc.php?matricola=' . $row[0] . '">Archivia</a>
 
                                         </div>
                                     </div>

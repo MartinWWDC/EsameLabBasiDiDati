@@ -50,7 +50,6 @@
                                     $sql = 'select * from insegnamento i inner join "corsoDiLaurea" c on i."corsoDiAppartenenza"=c.id where responsabile=$1';
                                     $result = launchSQL($sql, $params, "get_insengamenti");
                                     while ($row = pg_fetch_row($result)) {
-
                                         echo '
                                         <div class="col-md-4">
                                             <div class="card mb-4 box-shadow">
@@ -78,11 +77,13 @@
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">CFU:</th>
+                                                                <td colspan="2">'.$row[6].'</td>
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                     <a type="button" class="btn btn-secondary" href="./appelli.php?id='.$row[0].'">Gestisci Appelli</a>
-                                                    <a type="button" class="btn btn-success href="./creaApello.php">Crea Appello</a>
+                                                    <a type="button" class="btn btn-success" href="./creaAppello.php?id='.$row[0].'">Crea Appello</a>
 
                                                 </div>
                                             </div>

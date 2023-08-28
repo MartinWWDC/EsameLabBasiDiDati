@@ -24,7 +24,7 @@
                 require  '../public_components/utility.php';
                 $SQL='select * from  check_laurea($1)';
                 $params=array($_SESSION['user'][0]);
-                echo var_dump($params);
+                //echo var_dump($params);
                 $result=launchSQL($SQL,$params,"check_laurea");
                 $c="disabled";
                 while ($row = pg_fetch_row($result)) {
@@ -41,7 +41,7 @@
 
                     <section class="jumbotron text-center">
                         <div class="container">
-                            <h1 class="jumbotron-heading"><?php echo $studente[3] . "  " . $studente[4] . " si desidera richiedera la laura ?" ?></h1>
+                            <h1 class="jumbotron-heading">Si desidera richiedera la laurea ?</h1>
                             questo comporterà  la cancellazione dell'account
                         </div>
                     </section>

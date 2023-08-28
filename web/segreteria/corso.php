@@ -7,5 +7,5 @@ $SQL="INSERT INTO insegnamento VALUES (nextval('insegnamento_id_seq'::regclass),
 $result=array($_POST['nomeIns'],$_POST['annoCons'],$_POST['CFU'],$_POST['corsoLa'],NULL);
 
 $result=launchSQL($SQL,$result,"insert");
-header("Location: index.php"); 
+header("Location: listInsegnamenti.php"); 
 ?>
