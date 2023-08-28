@@ -1,5 +1,10 @@
 <?php
 session_start();
+//echo var_dump($_SESSION); 
+
+
+
+
 ?>
 
 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar"> <!-- Logo e nome della dashboard -->
@@ -9,11 +14,11 @@ session_start();
         </div>
     </div>
 
-    <!-- Links della sidebar -->
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link" href="./listLauree.php">Lauree</a>
-        </li><li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="./creaLauree.php">Crea Laurea</a>
         </li>
 
@@ -42,6 +47,14 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="./editProf.php">Edit</a>
         </li>
+        <?php 
+        
+            if($_SESSION['user'][2]=='t'){
+                echo    '<li class="nav-item">
+                        <a class="nav-link" href="./createSegreteria.php">Crea Segreteria</a>
+                        </li>';
+            }
+        ?>
         
     </ul>
 </nav>
