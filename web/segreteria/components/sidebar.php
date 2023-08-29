@@ -52,6 +52,9 @@ session_start();
             if($_SESSION['user'][2]=='t'){
                 echo    '<li class="nav-item">
                         <a class="nav-link" href="./createSegreteria.php">Crea Segreteria</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="./listSegreteria.php">Utenti segreteria</a>
                         </li>';
             }
         ?>
