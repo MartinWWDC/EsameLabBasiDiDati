@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.9 (Ubuntu 14.9-1.pgdg22.04+1)
--- Dumped by pg_dump version 15.4 (Ubuntu 15.4-1.pgdg22.04+1)
+-- Dumped from database version 12.16 (Ubuntu 12.16-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.16 (Ubuntu 12.16-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,15 +24,6 @@ CREATE SCHEMA esami;
 
 
 ALTER SCHEMA esami OWNER TO postgres;
-
---
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
---
-
--- *not* creating schema, since initdb creates it
-
-
-ALTER SCHEMA public OWNER TO postgres;
 
 --
 -- Name: annodiinsengnamento; Type: DOMAIN; Schema: esami; Owner: postgres
@@ -84,7 +75,7 @@ $$;
 ALTER FUNCTION esami.add_voto(votop integer, id_studentep character varying, id_corsop integer, "dataP" timestamp without time zone) OWNER TO postgres;
 
 --
--- Name: archivia_studente_tr(); Type: FUNCTION; Schema: esami; Owner: postgres
+-- Name: archivia_studente_tr(); Type: FUNCTION; Schema: esami; Owner: username
 --
 
 CREATE FUNCTION esami.archivia_studente_tr() RETURNS trigger
@@ -97,7 +88,7 @@ DECLARE
 BEGIN
     periodo_inattivita := calcola_periodo_inattivita(OLD.matricola);
     
-    INSERT INTO studente_arc VALUES (OLD.matricola, OLD.email,OLD.pass, OLD.nome, OLD.cognome,OLD.cfu, OLD.cellulare, periodo_inattivita,OLD."idLaurea");
+    INSERT INTO studente_arc VALUES (OLD.matricola, OLD.email,OLD.pass, OLD.nome, OLD.cognome,OLD.cfu, periodo_inattivita,OLD."idLaurea",OLD."dataN");
 
     FOR record_voto IN SELECT * FROM get_carriera(OLD.matricola)
     LOOP
@@ -116,7 +107,7 @@ END;
 $$;
 
 
-ALTER FUNCTION esami.archivia_studente_tr() OWNER TO postgres;
+ALTER FUNCTION esami.archivia_studente_tr() OWNER TO username;
 
 --
 -- Name: calcola_periodo_inattivita(character varying); Type: FUNCTION; Schema: esami; Owner: postgres
@@ -157,15 +148,14 @@ ALTER FUNCTION esami.calcola_periodo_inattivita(studente_id character varying) O
 
 CREATE FUNCTION esami.check_docente() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$
-DECLARE
+    AS $$DECLARE
     counter INTEGER;
 BEGIN 
     SELECT COUNT(responsabile) INTO counter
     FROM insegnamento
     WHERE responsabile = NEW.email;
 
-    IF counter = 0 THEN
+    IF counter > 0 THEN
         RETURN NEW;
     ELSE
         RAISE EXCEPTION 'docente non associato a nessun insegnamento'; 
@@ -278,29 +268,26 @@ CREATE FUNCTION esami.check_laurea(id_studentep character varying) RETURNS boole
     LANGUAGE plpgsql
     AS $$
 DECLARE
-    tabella1 RECORD;
-    tabella2 RECORD;
+    tabella1 text[];
+    tabella2 text[];
     idLaureaV INTEGER;
 BEGIN 
-	SELECT nome_insegnamento
-    FROM get_carriera_valida(id_studenteP)
+    SELECT array_agg(nome_insegnamento) FROM get_carriera_valida(id_studenteP)
     INTO tabella1;
-
+    
     SELECT "idLaurea" INTO idLaureaV
     FROM "Studente"
-    wHERE matricola=id_studenteP;
+    WHERE matricola = id_studenteP;
 
-    SELECT nome_insegnamento
-    FROM get_lista_insegnamenti(idLaureaV)
+    SELECT array_agg(nome_insegnamento) FROM get_lista_insegnamenti(idLaureaV)
     INTO tabella2;
 
-	IF tabella1 = tabella2 THEN
+    IF tabella1 = tabella2 THEN
         RETURN true;
     ELSE
         RETURN false;
     END IF;
-
-	END;
+END;
 $$;
 
 
@@ -335,7 +322,7 @@ $$;
 ALTER FUNCTION esami.check_propedeuticita(id_studentep character varying, id_insegnamentop integer) OWNER TO postgres;
 
 --
--- Name: create_docente(character varying, character varying, character varying, character varying, date, integer); Type: FUNCTION; Schema: esami; Owner: postgres
+-- Name: create_docente(character varying, character varying, character varying, character varying, date, integer); Type: FUNCTION; Schema: esami; Owner: leone
 --
 
 CREATE FUNCTION esami.create_docente(email character varying, pass character varying, nome character varying, cognome character varying, datadinascita date, id_insegnamentop integer) RETURNS void
@@ -345,15 +332,16 @@ BEGIN
     IF check_insegnamento(id_insegnamentoP) THEN
         BEGIN
         -- Inizia la transazione
-        
-        -- Inserimento del nuovo docente
-        INSERT INTO "docente" ("email", "pass", "nome", "cognome", "dataDiNascita")
-        VALUES (email, pass, nome, cognome, dataDiNascita);
-        
-        -- Aggiornamento del responsabile nell'insegnamento
         UPDATE insegnamento
         SET responsabile = email
         WHERE id = id_insegnamentoP;
+        -- Inserimento del nuovo docente
+        INSERT INTO "docente" ("email", "pass", "nome", "cognome", "dataN")
+        VALUES (email, pass, nome, cognome, dataDiNascita);
+        
+        -- Aggiornamento del responsabile nell'insegnamento
+      
+      
         
        END;
         
@@ -366,7 +354,7 @@ END;
 $$;
 
 
-ALTER FUNCTION esami.create_docente(email character varying, pass character varying, nome character varying, cognome character varying, datadinascita date, id_insegnamentop integer) OWNER TO postgres;
+ALTER FUNCTION esami.create_docente(email character varying, pass character varying, nome character varying, cognome character varying, datadinascita date, id_insegnamentop integer) OWNER TO leone;
 
 --
 -- Name: create_insegnamento(character varying, integer, integer); Type: FUNCTION; Schema: esami; Owner: postgres
@@ -422,6 +410,7 @@ BEGIN
     FROM insegnamento i 
     INNER JOIN sostiene s ON i.id = s.id_corso
     WHERE s.id_studente = id_studenteP
+    AND s.voto is NOT NULL
     order by s.data;
 END;
 $$;
@@ -646,11 +635,22 @@ CREATE TABLE esami.docente (
     pass character varying(255) NOT NULL,
     nome character varying(255) NOT NULL,
     cognome character varying(255) NOT NULL,
-    "dataDiNascita" timestamp without time zone
+    "dataN" date
 );
 
 
 ALTER TABLE esami.docente OWNER TO postgres;
+
+--
+-- Name: idlaureav; Type: TABLE; Schema: esami; Owner: leone
+--
+
+CREATE TABLE esami.idlaureav (
+    "idLaurea" integer
+);
+
+
+ALTER TABLE esami.idlaureav OWNER TO leone;
 
 --
 -- Name: insegnamento; Type: TABLE; Schema: esami; Owner: postgres
@@ -662,23 +662,12 @@ CREATE TABLE esami.insegnamento (
     "annoConsigliato" integer NOT NULL,
     cfu integer,
     "corsoDiAppartenenza" integer NOT NULL,
-    responsabile character varying(255)
+    responsabile character varying(255),
+    "desc" text
 );
 
 
 ALTER TABLE esami.insegnamento OWNER TO postgres;
-
---
--- Name: insegnamento_arc; Type: TABLE; Schema: esami; Owner: postgres
---
-
-CREATE TABLE esami.insegnamento_arc (
-    id_voto integer NOT NULL,
-    id_insegnamento integer NOT NULL
-);
-
-
-ALTER TABLE esami.insegnamento_arc OWNER TO postgres;
 
 --
 -- Name: insegnamento_id_seq; Type: SEQUENCE; Schema: esami; Owner: postgres
@@ -720,7 +709,8 @@ ALTER TABLE esami.propedeuticita OWNER TO postgres;
 
 CREATE TABLE esami.segreteria (
     email character varying(255) NOT NULL,
-    pass character varying(255) NOT NULL
+    pass character varying(255) NOT NULL,
+    "root " boolean
 );
 
 
@@ -751,9 +741,9 @@ CREATE TABLE esami.studente_arc (
     nome character varying(255) NOT NULL,
     cognome character varying(255) NOT NULL,
     cfu integer DEFAULT 0,
-    cellulare character varying(255) NOT NULL,
     "periodoInattivita" interval,
-    "idLaurea" integer
+    "idLaurea" integer,
+    "dataN" date
 );
 
 
@@ -833,10 +823,8 @@ ALTER TABLE ONLY esami.voti_arc ALTER COLUMN id SET DEFAULT nextval('esami.voti_
 --
 
 COPY esami."Studente" (matricola, email, pass, nome, cognome, cfu, "idLaurea", "dataN") FROM stdin;
-111111	temp	pp	pp	pp	0	2	\N
-tytt	test	test	test	test	0	1	\N
-mam	marco.aurelio@studenti.it	1	marco	aurelio	0	1	\N
-t8297	tizio.8@studente.com	a	tizio	8	0	3	2023-08-01
+ma697	marco.antonio@studente.com	a	marco	antonio	0	6	2023-07-31
+Mt882	Marco.tuttologo@studente.com	a	Marco	tuttologo	100	7	2023-07-12
 \.
 
 
@@ -845,17 +833,12 @@ t8297	tizio.8@studente.com	a	tizio	8	0	3	2023-08-01
 --
 
 COPY esami.appello ("dataA", luogo, corso) FROM stdin;
-2023-05-30 10:00:00	Aula 101	1
-2023-05-29 10:00:00	Aula 101	2
-2023-08-30 10:00:00	di giù	1
-0045-04-10 22:11:00	magica bula	1
-2023-08-23 11:00:00	sopra di me\n	2
-2023-08-29 11:00:00	ASSURDO SE CI PENSI\n	2
-2023-09-18 11:00:00	tewsto\n	2
-2023-09-30 11:00:00	sotto sopra \n	2
-2023-10-01 11:00:00	tu ma\n	2
-2023-05-20 10:00:00	tu ma	2
-2023-03-05 11:00:00	prova del nove	1
+2023-08-29 00:19:00	Celoria 333\n	10
+2023-09-03 00:00:00	Celoria 302	9
+2023-09-11 14:54:00	Celoria 302\n	9
+2023-09-09 09:09:00	Aula 7\n	11
+2023-08-29 03:01:00	Aula 7	11
+2023-08-30 08:08:00	Aula 7	11
 \.
 
 
@@ -864,11 +847,8 @@ COPY esami.appello ("dataA", luogo, corso) FROM stdin;
 --
 
 COPY esami."corsoDiLaurea" (id, nome, durata, anno, "desc") FROM stdin;
-0	informatica	3	2022	\N
-1	informatica musicale	3	2022	\N
-2	chimica	3	2022	\N
-3	sassologia	3	2023	sassolcidjn
-4	sassologia	3	2023	sassolcidjn
+6	Informatica	3	2023	corso di informatica
+7	Laurea Brevissima	3	2023	laurea con solo un insegnamento 
 \.
 
 
@@ -876,11 +856,18 @@ COPY esami."corsoDiLaurea" (id, nome, durata, anno, "desc") FROM stdin;
 -- Data for Name: docente; Type: TABLE DATA; Schema: esami; Owner: postgres
 --
 
-COPY esami.docente (email, pass, nome, cognome, "dataDiNascita") FROM stdin;
-docentemusicale@example.com	password	mario	rossi	\N
-email	varchar	varchar	varchar	\N
-paolo.orr@docente.com	t	paolo	orr	2023-08-23 00:00:00
-docente@example.com	a	mario	rossi	\N
+COPY esami.docente (email, pass, nome, cognome, "dataN") FROM stdin;
+Sebastiano.Vigna540@docente.com	a	Sebastiano	Vigna	1988-01-13
+Cecilia.Cavaterra176@docente.com	a	Cecilia	Cavaterra	2023-08-10
+\.
+
+
+--
+-- Data for Name: idlaureav; Type: TABLE DATA; Schema: esami; Owner: leone
+--
+
+COPY esami.idlaureav ("idLaurea") FROM stdin;
+6
 \.
 
 
@@ -888,27 +875,11 @@ docente@example.com	a	mario	rossi	\N
 -- Data for Name: insegnamento; Type: TABLE DATA; Schema: esami; Owner: postgres
 --
 
-COPY esami.insegnamento (id, "nomeInsegnamento", "annoConsigliato", cfu, "corsoDiAppartenenza", responsabile) FROM stdin;
-5	prova\\	2	5	2	\N
-2	simologia	1	12	1	\N
-6	prova\\	2	5	2	paolo.orr@docente.com
-4	testo	1	5	0	\N
-3	null	3	\N	1	\N
-1	miaologia	1	6	1	paolo.orr@docente.com
-\.
-
-
---
--- Data for Name: insegnamento_arc; Type: TABLE DATA; Schema: esami; Owner: postgres
---
-
-COPY esami.insegnamento_arc (id_voto, id_insegnamento) FROM stdin;
-10	2
-11	2
-12	2
-13	2
-14	2
-15	1
+COPY esami.insegnamento (id, "nomeInsegnamento", "annoConsigliato", cfu, "corsoDiAppartenenza", responsabile, "desc") FROM stdin;
+9	Programmazione I	1	12	6	Sebastiano.Vigna540@docente.com	\N
+8	Matermatica Del Continuo	1	12	6	Cecilia.Cavaterra176@docente.com	\N
+10	Programmazione II	2	6	6	Sebastiano.Vigna540@docente.com	\N
+11	Tuttologgia	1	100	7	Sebastiano.Vigna540@docente.com	\N
 \.
 
 
@@ -917,9 +888,7 @@ COPY esami.insegnamento_arc (id_voto, id_insegnamento) FROM stdin;
 --
 
 COPY esami.propedeuticita (id_insegnamento, id_insegnamento_propedeutico) FROM stdin;
-1	2
-4	5
-1	3
+10	9
 \.
 
 
@@ -927,8 +896,20 @@ COPY esami.propedeuticita (id_insegnamento, id_insegnamento_propedeutico) FROM s
 -- Data for Name: segreteria; Type: TABLE DATA; Schema: esami; Owner: postgres
 --
 
-COPY esami.segreteria (email, pass) FROM stdin;
-root@segreteria.com	a
+COPY esami.segreteria (email, pass, "root ") FROM stdin;
+root@segreteria.com	a	t
+root100@segreteria.com	a	f
+root15@segreteria.com	a	f
+root49@segreteria.com	a	f
+root27@segreteria.com	a	f
+root84@segreteria.com	a	f
+root38@segreteria.com	a	f
+root35@segreteria.com	a	f
+root60@segreteria.com	a	f
+root23@segreteria.com	a	f
+root18@segreteria.com	a	f
+root24@segreteria.com	a	f
+root42@segreteria.com	a	f
 \.
 
 
@@ -937,9 +918,12 @@ root@segreteria.com	a
 --
 
 COPY esami.sostiene (id_corso, data, id_studente, voto) FROM stdin;
-1	0045-04-10 22:11:00	tytt	5
-2	2023-08-23 11:00:00	mam	14
-2	2023-08-29 11:00:00	mam	\N
+9	2023-09-03 00:00:00	ma697	26
+10	2023-08-29 00:19:00	ma697	\N
+9	2023-09-11 14:54:00	ma697	12
+11	2023-08-29 03:01:00	Mt882	25
+11	2023-08-30 08:08:00	Mt882	12
+11	2023-09-09 09:09:00	Mt882	30
 \.
 
 
@@ -947,9 +931,7 @@ COPY esami.sostiene (id_corso, data, id_studente, voto) FROM stdin;
 -- Data for Name: studente_arc; Type: TABLE DATA; Schema: esami; Owner: postgres
 --
 
-COPY esami.studente_arc (matricola, email, pass, nome, cognome, cfu, cellulare, "periodoInattivita", "idLaurea") FROM stdin;
-esem	email@esempio.com	pass	esempioN	esempioC	0	3	-8 days -04:59:58.497879	1
-matri	email	password	nome	cognome	0	0000	\N	1
+COPY esami.studente_arc (matricola, email, pass, nome, cognome, cfu, "periodoInattivita", "idLaurea", "dataN") FROM stdin;
 \.
 
 
@@ -958,12 +940,6 @@ matri	email	password	nome	cognome	0	0000	\N	1
 --
 
 COPY esami.voti_arc (id, voto, "dataEsame", studente) FROM stdin;
-10	16	2023-08-23	esem
-11	25	2023-08-29	esem
-12	18	2023-09-18	esem
-13	15	2023-09-30	esem
-14	16	2023-10-01	esem
-15	26	0045-04-10	matri
 \.
 
 
@@ -979,21 +955,21 @@ COPY public.g (pri, t) FROM stdin;
 -- Name: corsoDiLaurea_id_seq; Type: SEQUENCE SET; Schema: esami; Owner: postgres
 --
 
-SELECT pg_catalog.setval('esami."corsoDiLaurea_id_seq"', 4, true);
+SELECT pg_catalog.setval('esami."corsoDiLaurea_id_seq"', 7, true);
 
 
 --
 -- Name: insegnamento_id_seq; Type: SEQUENCE SET; Schema: esami; Owner: postgres
 --
 
-SELECT pg_catalog.setval('esami.insegnamento_id_seq', 6, true);
+SELECT pg_catalog.setval('esami.insegnamento_id_seq', 11, true);
 
 
 --
 -- Name: voti_arc_id_seq; Type: SEQUENCE SET; Schema: esami; Owner: postgres
 --
 
-SELECT pg_catalog.setval('esami.voti_arc_id_seq', 15, true);
+SELECT pg_catalog.setval('esami.voti_arc_id_seq', 17, true);
 
 
 --
@@ -1037,14 +1013,6 @@ ALTER TABLE ONLY esami.docente
 
 
 --
--- Name: insegnamento_arc insegnamento_arc_pkey; Type: CONSTRAINT; Schema: esami; Owner: postgres
---
-
-ALTER TABLE ONLY esami.insegnamento_arc
-    ADD CONSTRAINT insegnamento_arc_pkey PRIMARY KEY (id_voto, id_insegnamento);
-
-
---
 -- Name: insegnamento insegnamento_pkey; Type: CONSTRAINT; Schema: esami; Owner: postgres
 --
 
@@ -1074,14 +1042,6 @@ ALTER TABLE ONLY esami.segreteria
 
 ALTER TABLE ONLY esami.sostiene
     ADD CONSTRAINT sostiene_pkey PRIMARY KEY (id_corso, data, id_studente);
-
-
---
--- Name: studente_arc studente_arc_cellulare_key; Type: CONSTRAINT; Schema: esami; Owner: postgres
---
-
-ALTER TABLE ONLY esami.studente_arc
-    ADD CONSTRAINT studente_arc_cellulare_key UNIQUE (cellulare);
 
 
 --
@@ -1138,6 +1098,13 @@ CREATE TRIGGER check_duplicate_appello_tr BEFORE INSERT ON esami.appello FOR EAC
 
 
 --
+-- Name: appello check_duplicate_appello_tr_up; Type: TRIGGER; Schema: esami; Owner: postgres
+--
+
+CREATE TRIGGER check_duplicate_appello_tr_up BEFORE UPDATE ON esami.appello FOR EACH ROW EXECUTE FUNCTION esami.check_duplicate_appello();
+
+
+--
 -- Name: sostiene check_esami_tr; Type: TRIGGER; Schema: esami; Owner: postgres
 --
 
@@ -1168,22 +1135,6 @@ ALTER TABLE ONLY esami.appello
 
 
 --
--- Name: insegnamento_arc insegnamento_arc_id_insegnamento_fkey; Type: FK CONSTRAINT; Schema: esami; Owner: postgres
---
-
-ALTER TABLE ONLY esami.insegnamento_arc
-    ADD CONSTRAINT insegnamento_arc_id_insegnamento_fkey FOREIGN KEY (id_insegnamento) REFERENCES esami.insegnamento(id);
-
-
---
--- Name: insegnamento_arc insegnamento_arc_id_voto_fkey; Type: FK CONSTRAINT; Schema: esami; Owner: postgres
---
-
-ALTER TABLE ONLY esami.insegnamento_arc
-    ADD CONSTRAINT insegnamento_arc_id_voto_fkey FOREIGN KEY (id_voto) REFERENCES esami.voti_arc(id);
-
-
---
 -- Name: insegnamento insegnamento_corsoDiAppartenenza_fkey; Type: FK CONSTRAINT; Schema: esami; Owner: postgres
 --
 
@@ -1196,7 +1147,7 @@ ALTER TABLE ONLY esami.insegnamento
 --
 
 ALTER TABLE ONLY esami.insegnamento
-    ADD CONSTRAINT insegnamento_responsabile_fkey FOREIGN KEY (responsabile) REFERENCES esami.docente(email);
+    ADD CONSTRAINT insegnamento_responsabile_fkey FOREIGN KEY (responsabile) REFERENCES esami.docente(email) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -1248,14 +1199,5 @@ ALTER TABLE ONLY esami.voti_arc
 
 
 --
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE USAGE ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
 -- PostgreSQL database dump complete
 --
-
