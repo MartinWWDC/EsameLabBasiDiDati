@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modifica Appello</title>
     <!-- Includi i file CSS di Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -27,13 +27,11 @@
     $result2 = launchSQL($sql, $params, "get_appello");
     $desc = "";
     $check = pg_num_rows($result2);
-    //echo $check;
     if ($check==0){
         $sql = 'select * from appello a where a."dataA"=$1 and a.corso=$2';
         $params = array($_GET['dataA'], $_GET['corso']);
         $result2 = launchSQL($sql, $params, "get_appelloC");
         while ($row = pg_fetch_row($result2)) {
-            //echo "c:".var_dump($row);
             $desc = $row[1];
         }
 
@@ -45,9 +43,7 @@
     if ($check != 0) {
         $dis = 'disabled';
     }
-    //echo var_dump($data);
-    //echo $time;
-
+    
     ?>
     <div class="container-fluid">
         <div class="row">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Creazione Insegnamento</title>
     <!-- Includi i file CSS di Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -38,15 +38,15 @@
                                             <form method="POST" action="corso.php">
                                                 <div class="form-group">
                                                     <label>Nome Insegnamento</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserire Nome Insegnamento" name="nomeIns">
+                                                    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Inserire Nome Insegnamento" name="nomeIns">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Anno Consigliato</label>
-                                                    <input type="number" min="1" max="3" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter anno consigliato" name="annoCons">
+                                                    <input type="number" min="1" max="3" class="form-control" aria-describedby="emailHelp" placeholder="Enter anno consigliato" name="annoCons">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>CFU</label>
-                                                    <input type="number" min="1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="CFU">
+                                                    <input type="number" min="1" class="form-control" aria-describedby="emailHelp" name="CFU">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Corso di laurea</label>
@@ -61,6 +61,10 @@
                                                         }
                                                         ?>
                                                     </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Descrizione</label>
+                                                    <input type="text" class="form-control" name="desc">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>

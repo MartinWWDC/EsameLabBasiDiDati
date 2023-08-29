@@ -84,7 +84,11 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Laurea di Partenza:</th>
-                                                        <td colspan="2">' . $row[12] . '</td>
+                                                        <td colspan="2">' . $row[13] . '</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Descrizione:</th>
+                                                        <td colspan="2">' . $row[6] . '</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Propedeuticità:</th>
@@ -92,7 +96,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">responsabile:</th>
-                                                        <td colspan="2">' . $row[8] . '<br />' . $row[9] . '</td>
+                                                        <td colspan="2">' . $row[9] . '<br />' . $row[10] . '</td>
                                                     </tr>
                                                     
                                                 </tbody>
@@ -100,7 +104,7 @@
                                             <div class="d-grid gap-2 d-md-block">
                                                 <a type="button" class="btn btn-secondary spaced-button" href="./associaPropedeuticità.php?idIns=' . $row[0] . '">associa propedeuticità</a>
                                                 <a type="button" class="btn btn-warning spaced-button" href="./revocaResponsabile.php?idIns=' . $row[0] . '">revoca responsabile</a>
-                                                <a type="button" class="btn btn-primary spaced-button" href="./gestisiPropedeuticità.php?idIns=' . $row[0] . '">Gestisci propedeuticità</a>
+                                                <a type="button" class="btn btn-primary spaced-button" href="./gestionePropedeuticità.php?idIns=' . $row[0] . '">Gestisci propedeuticità</a>
 
                                                 ' . $associa . '
                                                 
