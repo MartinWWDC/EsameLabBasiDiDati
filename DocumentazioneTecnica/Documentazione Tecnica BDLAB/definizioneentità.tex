@@ -1,0 +1,156 @@
+\section{Definizione Delle Entità}
+Partendo dalla consegna procederemo definenendo tutte le entità che fondamentali andranno a comporre la nostra base di dati 
+\subsection{Corso Di Laurea} \label{Corso Di Laurea}
+\subsubsection{Definizione}
+Un corso di laurea viene definito come un insimeme di insengnamenti in seguito al conseguimento della promozione di ognuno di essi da parte degli studenti  si consegue la laurea.
+Un corso di laurea può essere di due tipi 
+\begin{itemize}
+    \item \textbf{Triennale}: la cui duratà sarà di tre anni
+    \item \textbf{Magistrale}\footnote{si assume il conseguimento di una laurea triennale prima di potersi iscrivere ad una magistrale}: la cui duratà sarà di tre anni
+\end{itemize}
+il corso di laurea sarà struttuarato per avere validità di un determinato anno:
+
+in modo che se vi fosse differenza di corsi tra l'erogazione dello stesso corso ma in anni diversi sarà possibile registrare questo cambiamento.
+discorso analogo vale per gli insegnamenti (vedi \ref{Insegnamento})
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{nome}: nome corso
+    \item \textbf{durata}: durata corso \textbf{2-3}
+    \item \textbf{anno}: inteso come anno in cui gli studenti possono iscriveri al corso di laurea \textit{(es. le matricole di informatica 2023 si iscrivernanno al corso con nome=informatica e anno=2023)}
+    \item \textbf{descrizione}: breve descrizione del corso
+\end{itemize}
+\subsection{Insegnamento} \label{Insegnamento}
+\subsubsection{Definizione}
+Un insegnamento è associato ad un docente ed ad un corso di laurea.
+
+Un insegnamento può essere associato ad un solo corso di laurea, esso avrà un docente come responsabile un annoConsigliato e il numero di cfu
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{Nome Insegnamento}
+    \item \textbf{Anno Consigliato}: anno in cui si consiglia di seguire il corso 
+    \item \textbf{cfu}: numero di cfu che uno studente ottiene alla promozione
+    \item \textbf{Corso di Appartenenza}: laurea di appartenenza
+    \item \textbf{responsabile}: Docente responsabile del corso
+    
+\end{itemize}
+\subsection{Docente} \label{Docente}
+\subsubsection{Definizione}
+Quest'entità rappresenterà ogni singolo docente con le sue generalità tra cui la password che sarà fondamentale per il login
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{Email} :
+    \item \textbf{Passoword}: 
+    \item \textbf{Nome} 
+    \item \textbf{Cognome}
+    \item \textbf{Data Di Nascita}
+\end{itemize}
+\subsection{Studente} \label{Studente}
+
+\subsubsection{Definizione}
+Quest'entità rappresenterà ogni singolo Studente con le sue generalità tra cui la password che sarà fondamentale per il login.
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{matricola}: codice idetificativo dello studente 
+    \item \textbf{email}: email dello studente
+    \item \textbf{Passoword}: password dello studente
+    \item \textbf{nome}: nome dello studente
+    \item \textbf{cognome}: cognome dello studente
+    \item \textbf{cfu}:numero di cfu attualmente associati allo studente defino dinamenticamente dalla funzione update\_cfu (sezione \ref{updateCFU})
+    \item \textbf{idLaurea}: corso di laurea a cui è iscritto
+    \item \textbf{dataN}: data di nascita 
+\end{itemize}
+
+ \subsection{Studente Archivio} \label{Studente Archivio}
+
+\subsubsection{Definizione}
+Quest'entità rappresenterà ogni singolo Studente che viene rimosso dagli studenti attivi con le sue generalità tra cui la password che sarà fondamentale per il login.
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{matricola}: codice identificativo dello studente 
+    \item \textbf{email}: email dello studente
+    \item \textbf{Passoword}: password dell'utente
+    \item \textbf{nome}: nome dello studente
+    \item \textbf{cognome}: cognome dello studente
+    \item \textbf{cfu}: numero di cfu coseguiti dallo studente al momento dell'archiviazione
+    \item \textbf{idLaurea}: corso di laurea a cui è iscritto
+    \item \textbf{dataN}: data di nascita 
+    \item \textbf{Perido di inattività}: quanto tempo è decorso dall'ultimo esame dato alla data della sua rimozione
+\end{itemize}
+ 
+   
+\subsection{Appello} \label{appello}
+\subsubsection{Definizione}
+Ogni Insegnamento deve avere associati un elemento Appelo che permetta agli studenti di iscriversi ad un esame tramite il quale verranno poi valutati e potranno proseguire con la propria carriera
+\subsubsection{Parametri}
+
+\begin{itemize}
+    \item \textbf{data}: data dell'esame
+    \item \textbf{luogo}: luogo dell'esame
+    \item \textbf{corso}: corso di appartenenza
+\end{itemize}
+\subsection{Segreteria} \label{segreteria}
+\subsubsection{Definizione}
+La segreteria verrà implementata come account "manageriale" e non come un account associato ad una persona fisica, quindi tutti gli account segreteria avranno tutti quanti gli stessi permessi di creazione,rimozione e modifica dei profili Docente(\ref{Docente}), Studente(\ref{Studente}) ,gestione insegnamenti(\ref{Insegnamento}),corsi di laurea (\ref{Corso Di Laurea}) ecc...  
+\subsubsection{Parametri}
+Essendo account non associati a persone fisiche gli unici parametri di cui necessitano è sono:
+\begin{itemize}
+    \item email
+    \item password
+\end{itemize}
+\section{Definizione Relazioni}
+Date le entità viste nel paragrafo precedente però non sono sufficenti a soddisfare la consegna. Procediamo quindi con la definizione delle relazioni,cominciamo da quelle più ovvie:
+\begin{itemize}
+    \item \textbf{Insegnamento-Croso Di Laurea}: avremo una relazione 1 ad N in quanto \textit{corsoDiAppartenenza} fungerà da chiave esterna 
+    \item \textbf{Insegnamento-Docente}: questa relazione 1 a molti permetterà di associare un insegnamento il docente ad esso responsabile
+\end{itemize}
+Un occhio attento perà notera che le entità fin ora mostrate non sono sufficenti per un  soddisfacimento delle richieste, quindi è necessario realizzare delle altre entità che permettano la correlazioni tra le entità preesistenti.
+\subsection{Sostiene} \label{sostiene}
+\subsubsection{Definizione}
+Si tratta di un entità che permetterà di correlare gli appelli con gli studenti consentendo quindi di iscriversi agli appelli e di soddisfare il requisito sulla gestione dei voti
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{corso}: definisce il riferimento al corso
+    \item \textbf{appello}:  definisce il riferimento all'appello
+    \item \textbf{voto}: definisce il voto che lo studente ha preso in quel determinato appello
+\end{itemize}
+\begin{quote}
+    Si noti che in un primo momento voto sarà null al momento dell'iscrizione all'appello il suo valore cambierà solo in seguito alla correzzione del professore e all'assegnamento del voto
+\end{quote}
+\subsection{Propedeuticità} \label{sostiene}
+\subsubsection{Definizione}
+Un altra entità che non abbiamo ancora visto è quella necessaria a soddisfare la richiesta di impleementazione della meccanica sulla propedeuticità la quale prevede che la base di dati si assicuri che prima che uno studente possa iscriveri ad un appello che egli abbia già conseguito la promozione in un altro esame propedeutico.
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{insegnamento}: insegnamento normale
+    \item \textbf{insegnamentoPropedeutico}: insegnamento che bisogna aver conseguito per poter iscriversi all'insegnamento 'insegnamento normale'
+\end{itemize}
+\section{Gestione Archivio}\label{archivio}
+Ci accingiamo ora ad introdurre le meccaniche di Gestione dell'archivio. 
+
+Definiamo per prima cosa quale sarà lo scopo dell'archivio: l'archivio sarà un insieme di entità che permetteranno al momento della rimozione di un utente di salvarne la propria intera carriera
+\subsection{Studente Archivio} \label{studente archvio}
+\subsubsection{Definizione}
+entità che permette di contenere le informazioni dello studente archiviato
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{matricola}: Matricola dello studente
+    \item \textbf{email}: Email dello studente 
+    \item \textbf{Password}: Password dello studente 
+    \item \textbf{nome}: Nome dello studente
+    \item \textbf{cognome}: Cognome dello studente 
+    \item \textbf{cfu}: CFU dello studente 
+    \item \textbf{data nascita}: Data di nascita dello studente 
+    \item \textbf{periodo Inattività}: periodo di inattività dello studente
+    \item \textbf{Laurea}: Laurea a cui era iscritto lo studente al momento dell'archivio
+
+\end{itemize}
+\subsection{Voto Archivio} \label{voto archivio}
+\subsubsection{Definizione}
+una semplice entità in cui tutti i voti presenti in sostiene associati allo studente archiviato vengono trasferiti
+\subsubsection{Parametri}
+\begin{itemize}
+    \item \textbf{voto}
+    \item \textbf{insegnamento archivio}
+\end{itemize}
+\subsection{Insegnamento Archivio} \label{insegnamento archivio}
+una semplice entità in cui i campi in voti archivio vengono associati all'insegnamento a cui sono stati registrati

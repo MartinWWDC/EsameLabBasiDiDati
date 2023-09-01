@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{lipsum}  
+
+\lstdefinestyle{sqlStyle}{
+  language=SQL,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false
+}
+
+
+\title{Documentazione Tecnica Progetto Basi Di Dati 2022-2023}
+\author{Martino Francesco Leone}
+\date{Agosto 2023}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Introduzione}
+Di seguito, la presente documentazione tecnica procederà a illustrare, come richiesto, tutte le scelte implementative che hanno portato allo sviluppo della base di dati, insieme alle scelte di progettazione concettuale e logica della stessa, nonché gli aspetti metodologici adottati.
+
+Verranno inoltre illustrati tutti i trigger e le funzioni implementati, e sarà fornita una definizione di come ciascun componente sia stato interpretato in relazione alla traccia d'esame\footnote{Per "traccia d'esame" si fa riferimento al compito assegnato dal professore e pubblicato su Ariel, aggiornato al 25 agosto 2023; si presume che tale traccia sia nota al lettore}.
+
+Si procederà ora con la dettagliata esposizione delle suddette informazioni.
+
+\include{definizioneentità}
+\include{diagramma concettuale}
+\include{diagramma relazionale}
+\include{DB}
+\include{funzioni}
+\include{esempi}
+\end{document}

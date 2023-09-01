@@ -1,0 +1,204 @@
+\section{Struttua Data Base}
+
+Definiamo quindi ora tutte le tabelle con i rispettivi campi nel dettaglio 
+\begin{table}[ht]
+\centering
+\caption{Tabella Docente}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+email & VARCHAR(255) - Chiave primaria \\
+pass & VARCHAR(255) - Non nullo \\
+nome & VARCHAR(255) - Non nullo \\
+cognome & VARCHAR(255) - Non nullo \\
+dataDiNascita & DATE \\
+\bottomrule
+\end{tabularx}
+\label{tab:docente}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Segreteria}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+email & VARCHAR(255) - Chiave primaria \\
+pass & VARCHAR(255) - Non nullo \\
+root & boolean - Non nullo \\
+
+\bottomrule
+\label{tab:segreteria}
+
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Tabella CorsoDiLaurea}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id & SERIAL - Chiave primaria \\
+nome & VARCHAR(255) - Non nullo \\
+durata & INTEGER - Non nullo \\
+anno & VARCHAR(255) - Non nullo \\
+desc & text - Non nullo \\
+
+\bottomrule
+\label{tab:corsoDiLaurea}
+
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Insegnamento}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id & SERIAL - Chiave primaria \\
+nomeInsegnamento & VARCHAR(255) \\
+annoConsigliato & INTEGER - Non nullo \\
+cfu & INTEGER \\
+desc & TEXT\\
+corsoDiAppartenenza & INTEGER - Chiave esterna, riferisce a "corsoDiLaurea" ("id") - Non nullo \\
+
+responsabile & VARCHAR(255) - Chiave esterna, riferisce a "docente" ("email") \\
+
+\bottomrule
+\label{tab:insegnamento}
+
+\end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Propedeuticità}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id\_insegnamento & INTEGER - Chiave esterna, riferisce a "insegnamento" ("id") \\
+id\_insegnamento\_propedeutico & INTEGER - Chiave esterna, riferisce a "insegnamento" ("id") \\
+\bottomrule
+\label{tab:propedeuticità}
+
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Studente}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+matricola & VARCHAR(6) - Chiave primaria \\
+email & VARCHAR(255) - Unico, non nullo \\
+pass & VARCHAR(255) - Non nullo \\
+nome & VARCHAR(255) - Non nullo \\
+cognome & VARCHAR(255) - Non nullo \\
+cfu & INTEGER - Default 0 \\
+idLaurea & INTEGER - Chiave esterna, riferisce a "corsoDiLaurea" ("id") \\
+dataN & DATE - Non nullo \\
+\bottomrule
+\label{tab:studente}
+
+\end{tabularx}
+\end{table}
+
+
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Appello}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+dataA & TIMESTAMP \\
+luogo & VARCHAR(255) \\
+corso & INTEGER - Chiave esterna, riferisce a "insegnamento" ("id") \\
+\bottomrule
+\label{tab:appello}
+
+\end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Sostiene}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id_corso & INTEGER \\
+data & TIMESTAMP \\
+id_studente & VARCHAR(6) - Chiave esterna, riferisce a "Studente" ("matricola") \\
+voto & voto \\
+\bottomrule
+\label{tab:sostiene}
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Studente\_arc}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+matricola & VARCHAR(6) - Chiave primaria \\
+email & VARCHAR(255) - Unico e non nullo \\
+pass & VARCHAR(255) - Non nullo \\
+nome & VARCHAR(255) - Non nullo \\
+cognome & VARCHAR(255) - Non nullo \\
+cfu & INTEGER - Predefinito a 0 \\
+periodoInattivita & INTERVAL \\
+idLaurea & INTEGER - Chiave esterna, riferisce a "corsoDiLaurea" ("id") \\
+dataN & DATE - Non nullo \\
+\bottomrule
+\label{tab:studenteArc}
+\end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Voti\_arc}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id & SERIAL - Chiave primaria \\
+voto & voto - Non nullo \\
+dataEsame & DATE \\
+studente & VARCHAR(6) - Chiave esterna, riferisce a "Studente\_arc" ("matricola") \\
+\bottomrule
+\label{tab:votiArc}
+
+\end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tabella Insegnamento\_arc}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Campo} & \textbf{Descrizione} \\
+\midrule
+id\_voto & INTEGER - Chiave esterna, riferisce a "Voti\_arc" ("id") \\
+id\_insegnamento & INTEGER - Chiave esterna, riferisce a "insegnamento" ("id") \\
+\bottomrule
+\label{tab:insegnamentoArc}
+
+\end{tabularx}
+\end{table}
