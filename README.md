@@ -7,41 +7,37 @@
 - [x] fix di tutti i create con le transaction
 - [x] fix create insengnamento 
 - [x] archivio
-- [ ] demo web
-- [ ] update
+- [x] demo web
+- [x] update
 - [x] studente inattivo
-- [ ] finalizza interfaccia 
-- [ ] gestione utenti psql
-- [ ] gestione erorri 
-- [ ] fix date create appello  
-- [ ] fix docente data di nascita timestamp  
+- [x] finalizza interfaccia 
+- [x] gestione erorri 
+- [x] fix date create appello  
+- [x] fix docente data di nascita timestamp  
 - [x] fix percorsi assoluti con percorsi relativi
 - [ ] (optional) refactor email generation function 
-- [ ] (optional) studente data di nascita
-- [ ] remove update appello with transaction
+- [x] (optional) studente data di nascita
+- [x] remove update appello with transaction
 - [x] implement propedeuticità
 - [x] fix style
 - [x] sostituisci cellulare con data di nascità in Studente e termina il creaStudente.php
 - [x] remove responsabile from insengamento
-- [X] FIX ARCHIVIO
- 
+- [x] FIX ARCHIVIO
+
 # Note
 
 doecente di default per segnalare il mancato assegnamento di un insegnamento è  'null'  
 
-
 Propedeuticità:
+
 - id_insegnamento: insegnamento normale
--	id_insegnamento_propedeutico: insegnamento che bisogna aver conseguito per poter iscriversi all'insegnamento 'insegnamento normale'
+- id_insegnamento_propedeutico: insegnamento che bisogna aver conseguito per poter iscriversi all'insegnamento 'insegnamento normale'
 
 ## Note Installazione
 
 import db:
 
 t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
-
-
-
 
 # Road Map
 
@@ -50,9 +46,8 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
 - [x] setup ambiente 
 
 - [x] create domanins
- 
 
-- [ ] popolare db
+- [x] popolare db
 
 - [x] sviluppo trigger
 
@@ -85,17 +80,17 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito 
+  - [x] finito 
 
 * sposta Studente in archivio
   
   - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
-  - [ ] da testare 
+  - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 * ControlloPropeedeuticità 
   
@@ -135,7 +130,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 * controllo anno previsto di un insegnamento  sia coerente con  il corso di laurea 
   
@@ -156,7 +151,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - checkDocenteInsegnamento
   
@@ -168,10 +163,12 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
+
 - check_docente
   controlla quando un insengnante viene inserito che abbia associato  un insegnamento
-# Lista Metodi
+  
+  # Lista Metodi
 
 - produzione carriera completa di uno studente
   
@@ -181,7 +178,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - Produzione della carriera valida di uno studente
   
@@ -205,7 +202,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - check laurea
   
@@ -215,7 +212,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - Add voto 
   
@@ -227,7 +224,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - update cfue
   
@@ -239,7 +236,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - produzione carriera studenti inattivi 
   
@@ -247,11 +244,11 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] da implementare
   
-  - [ ] da popolare
+  - [x] da popolare
   
   - [x] da testare 
   
-  - [ ] finito
+  - [x] finito
 
 - get_propedeuticità
   
@@ -289,7 +286,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] add transaction
   
-  - [ ] finito
+  - [x] finito
 
 - creaInsengamento  **Deprecato**
   
@@ -303,7 +300,7 @@ t@t-Surface-Pro:~/Downloads$ psql -U postgres test < dump.sql
   
   - [x] add transaction 
   
-  - [ ] finito
+  - [x] finito
 
 - aggiornaResponsabil **Deprecato**
   
